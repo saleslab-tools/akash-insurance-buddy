@@ -3,174 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N3VEGKRGXP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N3VEGKRGXP');</script>
+<!-- Microsoft Clarity -->
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vkqsqzb8ix");</script>
 <title>Akash — Your Insurance Sales Buddy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600&family=Noto+Sans+Telugu:wght@400;500;600&family=Noto+Sans+Gujarati:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --wa-green: #00a884;
-  --wa-green-dark: #008069;
-  --wa-bg: #efeae2;
-  --wa-header: #1f2c34;
-  --wa-bubble-out: #d9fdd3;
-  --wa-bubble-in: #ffffff;
-  --wa-text: #111b21;
-  --wa-text-secondary: #667781;
-  --wa-time: #667781;
-  --wa-doodle: url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='p' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpath d='M10 10l5 5M25 5l3 8M45 15l-4 6M15 35l6-3M40 40l4 4M5 50l8-2M50 30l-3 7M30 45l5-5M20 20l-3 4M35 10l2 6' stroke='%23c8b89a' stroke-width='0.5' fill='none' opacity='0.3'/%3E%3Ccircle cx='30' cy='30' r='1' fill='%23c8b89a' opacity='0.2'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='400' height='400' fill='url(%23p)'/%3E%3C/svg%3E");
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: 'Noto Sans', 'Noto Sans Devanagari', 'Noto Sans Bengali', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Gujarati', sans-serif;
-  background: #111b21;
-  height: 100vh; height: 100dvh;
-  display: flex; justify-content: center; align-items: center; overflow: hidden;
-}
-.app-container {
-  width: 100%; max-width: 500px; height: 100vh; height: 100dvh;
-  display: flex; flex-direction: column; background: var(--wa-bg); position: relative; overflow: hidden;
-}
-@media (min-width: 768px) {
-  .app-container { height: 92vh; max-height: 850px; border-radius: 8px; box-shadow: 0 15px 60px rgba(0,0,0,0.5); }
-}
-.chat-header {
-  background: var(--wa-header); color: white; padding: 10px 16px;
-  display: flex; align-items: center; gap: 12px; flex-shrink: 0; z-index: 10;
-}
-.bot-avatar {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--wa-green), #25d366);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; font-weight: 700; color: white; flex-shrink: 0;
-}
-.bot-info { flex: 1; }
-.bot-name { font-size: 16px; font-weight: 600; }
-.bot-status { font-size: 11px; color: var(--wa-green); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.header-btn {
-  background: none; border: none; color: #aebac1; cursor: pointer;
-  font-size: 18px; padding: 4px; transition: color 0.2s;
-}
-.header-btn:hover { color: white; }
-.chat-area {
-  flex: 1; overflow-y: auto; padding: 12px 16px 8px;
-  background-color: #e5ddd5; background-image: var(--wa-doodle);
-  display: flex; flex-direction: column; gap: 4px; scroll-behavior: smooth;
-}
-.chat-area::-webkit-scrollbar { width: 6px; }
-.chat-area::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 3px; }
-.message {
-  max-width: 85%; padding: 8px 10px 6px; border-radius: 8px;
-  font-size: 14.2px; line-height: 1.45; color: var(--wa-text);
-  animation: msgIn 0.25s ease-out; word-wrap: break-word;
-}
-@keyframes msgIn {
-  from { opacity: 0; transform: translateY(8px) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-.message.bot {
-  background: var(--wa-bubble-in); align-self: flex-start;
-  border-top-left-radius: 0; box-shadow: 0 1px 0.5px rgba(11,20,26,0.08);
-}
-.message.user {
-  background: var(--wa-bubble-out); align-self: flex-end;
-  border-top-right-radius: 0; box-shadow: 0 1px 0.5px rgba(11,20,26,0.08);
-}
-.msg-time {
-  font-size: 11px; color: var(--wa-time); text-align: right; margin-top: 4px;
-  display: flex; justify-content: flex-end; align-items: center; gap: 4px;
-}
-.msg-time .ticks { color: #53bdeb; font-size: 14px; }
-.date-divider { text-align: center; margin: 8px 0; }
-.date-divider span {
-  background: #e1f2fb; color: var(--wa-text-secondary);
-  font-size: 12px; padding: 5px 12px; border-radius: 8px;
-  box-shadow: 0 1px 0.5px rgba(11,20,26,0.08);
-}
-.quick-replies { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; padding-bottom: 4px; }
-.quick-btn {
-  background: none; border: 1px solid var(--wa-green); color: var(--wa-green);
-  padding: 7px 14px; border-radius: 20px; font-size: 13.5px;
-  cursor: pointer; font-family: inherit; transition: all 0.2s;
-}
-.quick-btn:hover { background: var(--wa-green); color: white; }
-.quick-btn:active { transform: scale(0.95); }
-.input-area {
-  background: #f0f2f5; padding: 8px 10px;
-  display: flex; align-items: flex-end; gap: 8px; flex-shrink: 0;
-}
-.text-input-wrap {
-  flex: 1; background: white; border-radius: 24px;
-  display: flex; align-items: flex-end; padding: 6px 14px;
-  min-height: 42px; max-height: 120px;
-}
-#userInput {
-  flex: 1; border: none; outline: none; font-size: 15px; font-family: inherit;
-  resize: none; max-height: 100px; line-height: 1.4; color: var(--wa-text); background: transparent;
-}
-#userInput::placeholder { color: #8696a0; }
-.send-btn {
-  width: 42px; height: 42px; border-radius: 50%; border: none;
-  background: var(--wa-green); color: white; font-size: 20px;
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; transition: background 0.2s, transform 0.1s;
-}
-.send-btn:hover { background: var(--wa-green-dark); }
-.send-btn:active { transform: scale(0.92); }
-.icebreaker-card {
-  background: linear-gradient(135deg, #f0faf0, #e8f5e9);
-  border: 1px solid #c8e6c9; border-radius: 10px; padding: 14px; margin-top: 8px;
-}
-.icebreaker-card h4 {
-  font-size: 12px; color: var(--wa-green-dark); text-transform: uppercase;
-  letter-spacing: 0.5px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
-}
-.icebreaker-msg {
-  font-size: 14px; line-height: 1.55; color: var(--wa-text);
-  margin-bottom: 10px; padding: 10px; background: white;
-  border-radius: 6px; border-left: 3px solid var(--wa-green);
-}
-.card-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-.copy-btn, .wa-btn {
-  display: inline-flex; align-items: center; gap: 5px; border: none;
-  padding: 6px 14px; border-radius: 16px; font-size: 12.5px;
-  cursor: pointer; font-family: inherit; transition: all 0.2s;
-}
-.copy-btn { background: var(--wa-green); color: white; }
-.copy-btn:hover { background: var(--wa-green-dark); }
-.copy-btn.copied { background: #333; }
-.wa-btn { background: #25d366; color: white; text-decoration: none; }
-.wa-btn:hover { background: #1da851; }
-.typing-indicator { display: flex; gap: 4px; padding: 4px 0; }
-.typing-indicator span {
-  width: 7px; height: 7px; background: #8696a0; border-radius: 50%;
-  animation: typingBounce 1.4s ease-in-out infinite;
-}
-.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
-@keyframes typingBounce {
-  0%, 60%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-6px); }
-}
-.lang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
-.lang-btn {
-  background: white; border: 1.5px solid #e0e0e0; border-radius: 10px;
-  padding: 10px 8px; text-align: center; cursor: pointer; font-family: inherit; transition: all 0.2s;
-}
-.lang-btn:hover { border-color: var(--wa-green); background: #f0faf0; }
-.lang-btn .lang-native { font-size: 15px; font-weight: 600; color: var(--wa-text); }
-.lang-btn .lang-eng { font-size: 11px; color: var(--wa-text-secondary); margin-top: 2px; }
-.new-chat-fab {
-  position: absolute; bottom: 76px; right: 16px; width: 48px; height: 48px;
-  border-radius: 50%; background: var(--wa-green); color: white; border: none;
-  font-size: 22px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  z-index: 5; display: none; align-items: center; justify-content: center; transition: transform 0.2s;
-}
-.new-chat-fab:hover { transform: scale(1.08); }
-.new-chat-fab.show { display: flex; }
-.encryption-notice {
-  text-align: center; padding: 5px; font-size: 11.5px; color: #8696a0;
-  background: #fdf4c5; display: flex; align-items: center; justify-content: center; gap: 5px; flex-shrink: 0;
-}
+:root{--wa-green:#00a884;--wa-green-dark:#008069;--wa-bg:#efeae2;--wa-header:#1f2c34;--wa-bubble-out:#d9fdd3;--wa-bubble-in:#ffffff;--wa-text:#111b21;--wa-text-secondary:#667781;--wa-time:#667781;--wa-doodle:url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='p' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpath d='M10 10l5 5M25 5l3 8M45 15l-4 6M15 35l6-3M40 40l4 4M5 50l8-2M50 30l-3 7M30 45l5-5M20 20l-3 4M35 10l2 6' stroke='%23c8b89a' stroke-width='0.5' fill='none' opacity='0.3'/%3E%3Ccircle cx='30' cy='30' r='1' fill='%23c8b89a' opacity='0.2'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='400' height='400' fill='url(%23p)'/%3E%3C/svg%3E")}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans','Noto Sans Devanagari','Noto Sans Bengali','Noto Sans Tamil','Noto Sans Telugu','Noto Sans Gujarati',sans-serif;background:#111b21;height:100vh;height:100dvh;display:flex;justify-content:center;align-items:center;overflow:hidden}
+.app-container{width:100%;max-width:500px;height:100vh;height:100dvh;display:flex;flex-direction:column;background:var(--wa-bg);position:relative;overflow:hidden}
+@media(min-width:768px){.app-container{height:92vh;max-height:850px;border-radius:8px;box-shadow:0 15px 60px rgba(0,0,0,0.5)}}
+.chat-header{background:var(--wa-header);color:white;padding:10px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0;z-index:10}
+.bot-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--wa-green),#25d366);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:white;flex-shrink:0}
+.bot-info{flex:1}.bot-name{font-size:16px;font-weight:600}.bot-status{font-size:11px;color:var(--wa-green);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-btn{background:none;border:none;color:#aebac1;cursor:pointer;font-size:18px;padding:4px;transition:color .2s}.header-btn:hover{color:white}
+.chat-area{flex:1;overflow-y:auto;padding:12px 16px 8px;background-color:#e5ddd5;background-image:var(--wa-doodle);display:flex;flex-direction:column;gap:4px;scroll-behavior:smooth}
+.chat-area::-webkit-scrollbar{width:6px}.chat-area::-webkit-scrollbar-thumb{background:rgba(0,0,0,.2);border-radius:3px}
+.message{max-width:85%;padding:8px 10px 6px;border-radius:8px;font-size:14.2px;line-height:1.45;color:var(--wa-text);animation:msgIn .25s ease-out;word-wrap:break-word}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.message.bot{background:var(--wa-bubble-in);align-self:flex-start;border-top-left-radius:0;box-shadow:0 1px .5px rgba(11,20,26,.08)}
+.message.user{background:var(--wa-bubble-out);align-self:flex-end;border-top-right-radius:0;box-shadow:0 1px .5px rgba(11,20,26,.08)}
+.msg-time{font-size:11px;color:var(--wa-time);text-align:right;margin-top:4px;display:flex;justify-content:flex-end;align-items:center;gap:4px}
+.msg-time .ticks{color:#53bdeb;font-size:14px}
+.date-divider{text-align:center;margin:8px 0}.date-divider span{background:#e1f2fb;color:var(--wa-text-secondary);font-size:12px;padding:5px 12px;border-radius:8px;box-shadow:0 1px .5px rgba(11,20,26,.08)}
+.quick-replies{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;padding-bottom:4px}
+.quick-btn{background:none;border:1px solid var(--wa-green);color:var(--wa-green);padding:7px 14px;border-radius:20px;font-size:13.5px;cursor:pointer;font-family:inherit;transition:all .2s}
+.quick-btn:hover{background:var(--wa-green);color:white}.quick-btn:active{transform:scale(.95)}
+.quick-btn.selected{background:var(--wa-green);color:white}
+.input-area{background:#f0f2f5;padding:8px 10px;display:flex;align-items:flex-end;gap:8px;flex-shrink:0}
+.text-input-wrap{flex:1;background:white;border-radius:24px;display:flex;align-items:flex-end;padding:6px 14px;min-height:42px;max-height:120px}
+#userInput{flex:1;border:none;outline:none;font-size:15px;font-family:inherit;resize:none;max-height:100px;line-height:1.4;color:var(--wa-text);background:transparent}
+#userInput::placeholder{color:#8696a0}
+.send-btn{width:42px;height:42px;border-radius:50%;border:none;background:var(--wa-green);color:white;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,transform .1s}
+.send-btn:hover{background:var(--wa-green-dark)}.send-btn:active{transform:scale(.92)}
+.icebreaker-card{background:linear-gradient(135deg,#f0faf0,#e8f5e9);border:1px solid #c8e6c9;border-radius:10px;padding:14px;margin-top:8px}
+.icebreaker-card h4{font-size:12px;color:var(--wa-green-dark);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.icebreaker-msg{font-size:14px;line-height:1.55;color:var(--wa-text);margin-bottom:10px;padding:10px;background:white;border-radius:6px;border-left:3px solid var(--wa-green)}
+.card-actions{display:flex;gap:8px;flex-wrap:wrap}
+.copy-btn,.wa-btn{display:inline-flex;align-items:center;gap:5px;border:none;padding:6px 14px;border-radius:16px;font-size:12.5px;cursor:pointer;font-family:inherit;transition:all .2s}
+.copy-btn{background:var(--wa-green);color:white}.copy-btn:hover{background:var(--wa-green-dark)}.copy-btn.copied{background:#333}
+.wa-btn{background:#25d366;color:white;text-decoration:none}.wa-btn:hover{background:#1da851}
+.typing-indicator{display:flex;gap:4px;padding:4px 0}
+.typing-indicator span{width:7px;height:7px;background:#8696a0;border-radius:50%;animation:typingBounce 1.4s ease-in-out infinite}
+.typing-indicator span:nth-child(2){animation-delay:.2s}.typing-indicator span:nth-child(3){animation-delay:.4s}
+@keyframes typingBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.lang-btn{background:white;border:1.5px solid #e0e0e0;border-radius:10px;padding:10px 8px;text-align:center;cursor:pointer;font-family:inherit;transition:all .2s}
+.lang-btn:hover{border-color:var(--wa-green);background:#f0faf0}
+.lang-btn .lang-native{font-size:15px;font-weight:600;color:var(--wa-text)}.lang-btn .lang-eng{font-size:11px;color:var(--wa-text-secondary);margin-top:2px}
+.new-chat-fab{position:absolute;bottom:76px;right:16px;width:48px;height:48px;border-radius:50%;background:var(--wa-green);color:white;border:none;font-size:22px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:5;display:none;align-items:center;justify-content:center;transition:transform .2s}
+.new-chat-fab:hover{transform:scale(1.08)}.new-chat-fab.show{display:flex}
+.encryption-notice{text-align:center;padding:5px;font-size:11.5px;color:#8696a0;background:#fdf4c5;display:flex;align-items:center;justify-content:center;gap:5px;flex-shrink:0}
+/* Mode selector */
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.mode-btn{background:white;border:2px solid #e0e0e0;border-radius:12px;padding:16px 10px;text-align:center;cursor:pointer;font-family:inherit;transition:all .2s}
+.mode-btn:hover{border-color:var(--wa-green);background:#f0faf0;transform:scale(1.02)}
+.mode-btn .mode-icon{font-size:28px;margin-bottom:6px}
+.mode-btn .mode-title{font-size:14px;font-weight:600;color:var(--wa-text)}
+.mode-btn .mode-desc{font-size:11px;color:var(--wa-text-secondary);margin-top:4px}
+/* Result cards for product reco */
+.reco-card{background:linear-gradient(135deg,#f3f0ff,#ede7f6);border:1px solid #d1c4e9;border-radius:10px;padding:14px;margin-top:8px}
+.reco-card.primary{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-color:#a5d6a7}
+.reco-card.bundle{background:linear-gradient(135deg,#fff3e0,#ffe0b2);border-color:#ffcc80}
+.reco-card h4{font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.reco-card.primary h4{color:#2e7d32}
+.reco-card h4{color:#5e35b1}
+.reco-card.bundle h4{color:#e65100}
+.reco-product{font-size:16px;font-weight:700;color:var(--wa-text);margin-bottom:4px}
+.reco-type{font-size:12px;color:var(--wa-text-secondary);margin-bottom:6px}
+.reco-explain{font-size:13px;line-height:1.5;color:var(--wa-text);padding:8px;background:white;border-radius:6px;border-left:3px solid #7c4dff}
+.reco-card.primary .reco-explain{border-left-color:var(--wa-green)}
+.reco-card.bundle .reco-explain{border-left-color:#ff9800}
+.snapshot-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.snap-item{background:white;border-radius:8px;padding:10px;text-align:center}
+.snap-label{font-size:11px;color:var(--wa-text-secondary)}
+.snap-value{font-size:15px;font-weight:700;color:var(--wa-text);margin-top:2px}
+.snap-value.green{color:#2e7d32}
+.score-bar-wrap{margin-top:4px}
+.score-bar{height:6px;background:#e0e0e0;border-radius:3px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:3px;transition:width .6s}
+/* Goal toggle buttons */
+.goal-toggles{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.goal-toggle{display:flex;align-items:center;gap:10px;background:white;border:1.5px solid #e0e0e0;border-radius:10px;padding:10px 14px;cursor:pointer;font-family:inherit;transition:all .2s;font-size:14px;color:var(--wa-text)}
+.goal-toggle.on{border-color:var(--wa-green);background:#f0faf0}
+.goal-toggle .toggle-dot{width:20px;height:20px;border-radius:50%;border:2px solid #ccc;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;font-size:12px}
+.goal-toggle.on .toggle-dot{border-color:var(--wa-green);background:var(--wa-green);color:white}
+.done-btn{background:var(--wa-green);color:white;border:none;padding:10px 24px;border-radius:20px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;margin-top:8px;transition:all .2s;width:100%}
+.done-btn:hover{background:var(--wa-green-dark)}
 </style>
 </head>
 <body>
@@ -200,524 +123,532 @@ body {
   </div>
 </div>
 <script>
-const STATE = { step: 'welcome', data: {}, inputDisabled: false };
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
+const STATE = { mode: null, step: 'welcome', data: {}, recoData: {}, inputDisabled: false };
 
-// ────────────────────────────────────────────
-// DYNAMIC FESTIVAL CALENDAR — 2026 accurate
-// Only shows festivals STRICTLY in the future
-// ────────────────────────────────────────────
-// Dates are approximate lunar calendar positions for 2026.
-// Each entry: { name, dates: [[year,month,day], ...] }
-// We store multiple years so it works across year boundaries.
-const FESTIVALS = [
-  { name: 'Holi',                  dates: [[2026,3,10],[2027,2,28]] },
-  { name: 'Ugadi / Gudi Padwa',    dates: [[2026,3,19],[2027,3,9]] },
-  { name: 'Eid ul-Fitr',           dates: [[2026,3,20],[2027,3,10]] },
-  { name: 'Ram Navami',            dates: [[2026,3,28],[2027,3,18]] },
-  { name: 'Baisakhi / Vishu',      dates: [[2026,4,14],[2027,4,14]] },
-  { name: 'Akshaya Tritiya',       dates: [[2026,4,26],[2027,4,16]] },
-  { name: 'Eid ul-Adha',           dates: [[2026,5,27],[2027,5,17]] },
-  { name: 'Rath Yatra',            dates: [[2026,6,23],[2027,6,13]] },
-  { name: 'Raksha Bandhan',        dates: [[2026,8,8],[2027,7,29]] },
-  { name: 'Independence Day',      dates: [[2026,8,15],[2027,8,15]] },
-  { name: 'Janmashtami',           dates: [[2026,8,15],[2027,8,5]] },
-  { name: 'Ganesh Chaturthi',      dates: [[2026,8,26],[2027,8,16]] },
-  { name: 'Onam',                  dates: [[2026,9,4],[2027,8,25]] },
-  { name: 'Navratri starts',       dates: [[2026,9,22],[2027,9,11]] },
-  { name: 'Dussehra',              dates: [[2026,10,1],[2027,9,21]] },
-  { name: 'Karwa Chauth',          dates: [[2026,10,11],[2027,10,1]] },
-  { name: 'Diwali',                dates: [[2026,10,19],[2027,10,8]] },
-  { name: 'Bhai Dooj',             dates: [[2026,10,21],[2027,10,10]] },
-  { name: 'Guru Nanak Jayanti',    dates: [[2026,11,8],[2027,10,29]] },
-  { name: 'Christmas',             dates: [[2026,12,25],[2027,12,25]] },
-  { name: 'New Year',              dates: [[2027,1,1],[2028,1,1]] },
-  { name: 'Makar Sankranti / Pongal', dates: [[2027,1,14],[2028,1,14]] },
-  { name: 'Republic Day',          dates: [[2027,1,26],[2028,1,26]] },
-  { name: 'Maha Shivaratri',       dates: [[2027,2,13],[2028,2,2]] },
-];
+// ═══════════════════════════════════════════════
+// PRODUCT RECOMMENDATION ENGINE (from Excel)
+// ═══════════════════════════════════════════════
+const CONFIG = {
+  inflationGeneral: 0.06,
+  inflationEducation: 0.09,
+  inflationMedical: 0.10,
+  horizon: 20,
+  expenseToIncomeRatio: 0.65,
+  coverMultipleMarried: 12,
+  coverMultipleSingle: 6,
+  goalBufferFactor: 0.35,
+  premiumBudgetSoft: 0.08,
+  premiumBudgetHard: 0.12,
+  coverRoundingStep: 2500000,
 
-function getUpcomingFestivals() {
-  const today = new Date();
-  today.setHours(0,0,0,0);
-  const results = [];
-
-  FESTIVALS.forEach(f => {
-    // Find the nearest FUTURE date for this festival
-    for (const [y, m, d] of f.dates) {
-      const festDate = new Date(y, m - 1, d);
-      const diff = Math.ceil((festDate - today) / 864e5);
-      if (diff >= 1 && diff <= 90) { // 1 to 90 days in future only
-        let tag;
-        if (diff <= 7) tag = 'this week!';
-        else if (diff <= 14) tag = 'next week';
-        else if (diff <= 30) tag = `~${Math.ceil(diff/7)} weeks away`;
-        else tag = `~${Math.round(diff/30)} month${diff>45?'s':''} away`;
-
-        results.push({
-          name: f.name,
-          daysAway: diff,
-          label: `${f.name} (${tag})`
-        });
-        break; // only take the closest future date
-      }
-    }
-  });
-
-  results.sort((a, b) => a.daysAway - b.daysAway);
-  return results.slice(0, 5);
-}
-
-// ────────────────────────────────────────────
-// LANGUAGES
-// ────────────────────────────────────────────
-const LANGUAGES = {
-  en: { name: 'English',  native: 'English',  flag: '🇬🇧' },
-  hi: { name: 'Hindi',    native: 'हिन्दी',   flag: '🇮🇳' },
-  bn: { name: 'Bengali',  native: 'বাংলা',    flag: '🇮🇳' },
-  ta: { name: 'Tamil',    native: 'தமிழ்',    flag: '🇮🇳' },
-  te: { name: 'Telugu',   native: 'తెలుగు',   flag: '🇮🇳' },
-  mr: { name: 'Marathi',  native: 'मराठी',    flag: '🇮🇳' },
-  as: { name: 'Assamese', native: 'অসমীয়া',  flag: '🇮🇳' },
-  gu: { name: 'Gujarati', native: 'ગુજરાતી', flag: '🇮🇳' }
-};
-
-// ────────────────────────────────────────────
-// ICEBREAKER SCRIPTS
-// ────────────────────────────────────────────
-// Written for a 10th/12th pass agent to send.
-// - Simple, natural language (not corporate English)
-// - Respectful first-touch — no plan pitching
-// - CTA = always request a short meeting/call
-// - No city filler — removed entirely
-// ────────────────────────────────────────────
-
-const SCRIPTS = {
-
-family_young_married: {
-  en: [
-    "Hi {name}, congratulations on your new life! 🎉 I help newly married couples plan for each other's financial safety — it's something most people don't think about until it's too late. Can we talk for 10 minutes over chai? No pressure, just a friendly conversation.",
-    "Hello {name}! I work with many young couples like you on one important thing — making sure you both are financially covered for each other. Can I get 10 minutes of your time this week? Just a simple meeting, nothing more.",
-    "Hi {name}, hope married life is going great! 😊 Many young couples I work with tell me they're happy they had one 10-minute conversation about protecting each other's future. Would you be open to a quick meetup?"
-  ],
-  hi: [
-    "नमस्ते {name} जी! शादी की बहुत-बहुत बधाई! 🎉 मैं newly married couples को एक-दूसरे की financial safety plan करने में help करता हूँ — ये वो चीज़ है जो ज़्यादातर लोग बाद में सोचते हैं। क्या इस हफ्ते 10 मिनट चाय पर बात हो सकती है? कोई pressure नहीं।",
-    "हेलो {name} जी! मैं आपके जैसे कई young couples के साथ एक ज़रूरी चीज़ पर काम करता हूँ — एक-दूसरे की financial security। बस 10 मिनट का time दे सकते हैं इस हफ्ते? बस एक simple मुलाकात।",
-    "नमस्ते {name} जी! उम्मीद है married life मज़ेदार चल रही है! 😊 बहुत से couples कहते हैं कि एक 10 मिनट की बातचीत से उनका दिल हल्का हो गया — future secure जो हो गया। एक quick meeting हो सकती है?"
-  ],
-  bn: [
-    "নমস্কার {name}! নতুন জীবনের অনেক শুভেচ্ছা! 🎉 আমি newly married couples-কে একে অপরের financial safety plan করতে সাহায্য করি। এই সপ্তাহে ১০ মিনিট চায়ে কথা বলা যাবে? কোনো pressure নেই।",
-  ],
-  ta: [
-    "வணக்கம் {name}! புதிய வாழ்க்கைக்கு வாழ்த்துக்கள்! 🎉 நான் newly married couples-க்கு ஒருவருக்கொருவர் financial safety plan செய்ய உதவுகிறேன். இந்த வாரம் 10 நிமிடம் பேசலாமா? எந்த pressure-ம் இல்லை."
-  ],
-  te: [
-    "నమస్కారం {name}! కొత్త జీవితానికి శుభాకాంక్షలు! 🎉 నేను newly married couples-కి ఒకరికొకరు financial safety plan చేయడంలో సహాయం చేస్తాను. ఈ వారంలో 10 నిమిషాలు మాట్లాడవచ్చా? ఏ pressure లేదు."
-  ],
-  mr: [
-    "नमस्कार {name}! लग्नाच्या खूप शुभेच्छा! 🎉 मी नवविवाहित जोडप्यांना एकमेकांची financial safety plan करायला मदत करतो. या आठवड्यात १० मिनिटं चहावर बोलता येईल? कोणताही pressure नाही."
-  ],
-  as: [
-    "নমস্কাৰ {name}! নতুন জীৱনৰ শুভেচ্ছা! 🎉 মই newly married দম্পতীক ইজনে সিজনৰ financial safety plan কৰাত সহায় কৰোঁ। এই সপ্তাহত ১০ মিনিট চাহত কথা পাতিব পাৰিমনে?"
-  ],
-  gu: [
-    "નમસ્તે {name}! લગ્નની ખૂબ શુભેચ્છા! 🎉 હું newly married couples-ને એકબીજાની financial safety plan કરવામાં મદદ કરું છું. આ અઠવાડિયે ૧૦ મિનિટ ચા પર મળીએ? કોઈ pressure નહીં."
-  ]
-},
-
-family_with_kids: {
-  en: [
-    "Hi {name}, as a parent I'm sure your child's future is always on your mind. I help families make sure their kids' education is taken care of no matter what happens. Can we sit down for just 10 minutes? No pressure — just sharing what other parents are doing.",
-    "Hello {name}! Many parents I work with had just one worry — \"Is my child's future safe?\" I help them get that peace of mind. Would you be free for a 10-minute chai meeting this week?",
-    "Hi {name}, a lot of {occupation} parents have told me that a simple 10-minute conversation gave them complete peace about their child's future. Can I request the same 10 minutes from you?"
-  ],
-  hi: [
-    "नमस्ते {name} जी! एक parent होने के नाते मुझे पता है कि बच्चों का future हमेशा दिमाग में रहता है। मैं families की help करता हूँ कि बच्चों की पढ़ाई का इंतेज़ाम हो जाए चाहे कुछ भी हो। बस 10 मिनट बैठकर बात करें? कोई pressure नहीं — बस बता रहा हूँ बाकी parents क्या कर रहे हैं।",
-    "हेलो {name} जी! बहुत से parents की एक ही चिंता होती है — \"मेरे बच्चे का future safe है?\" मैं उनको यही peace of mind देता हूँ। इस हफ्ते 10 मिनट चाय पर मिल सकते हैं?",
-    "नमस्ते {name} जी! बहुत से {occupation} parents ने मुझसे कहा कि एक simple 10 मिनट की बातचीत से उनको बच्चे के future को लेकर पूरा chain हो गया। क्या मैं आपसे भी वो 10 मिनट माँग सकता हूँ?"
-  ],
-  bn: [
-    "নমস্কার {name}! একজন parent হিসেবে আমি জানি সন্তানের ভবিষ্যৎ সবসময় মাথায় থাকে। আমি families-কে সাহায্য করি যাতে বাচ্চাদের পড়াশোনার ব্যবস্থা হয়ে যায়। এই সপ্তাহে ১০ মিনিট চায়ে কথা বলবেন?"
-  ],
-  ta: [
-    "வணக்கம் {name}! ஒரு parent-ஆக குழந்தையின் எதிர்காலம் எப்போதும் நினைவில் இருக்கும் என்று எனக்குத் தெரியும். குழந்தைகளின் படிப்பு safe-ஆக இருக்க families-க்கு உதவுகிறேன். இந்த வாரம் 10 நிமிடம் சந்திக்கலாமா?"
-  ],
-  te: [
-    "నమస్కారం {name}! ఒక parent గా పిల్లల భవిష్యత్తు ఎప్పుడూ మనసులో ఉంటుంది అని నాకు తెలుసు. పిల్లల చదువు safe-గా ఉండేలా families-కి సహాయం చేస్తాను. ఈ వారంలో 10 నిమిషాలు కలుద్దామా?"
-  ],
-  mr: [
-    "नमस्कार {name}! एक पालक म्हणून मला माहीत आहे मुलांचं भविष्य नेहमी डोक्यात असतं. मुलांच्या शिक्षणाची व्यवस्था होण्यासाठी मी families ना मदत करतो. या आठवड्यात १० मिनिटं भेटूया?"
-  ],
-  as: [
-    "নমস্কাৰ {name}! এজন অভিভাৱক হিচাপে মই জানো সন্তানৰ ভৱিষ্যত সদায় মনত থাকে। সন্তানৰ পঢ়াশুনাৰ ব্যৱস্থা হোৱাত পৰিয়ালক সহায় কৰোঁ। এই সপ্তাহত ১০ মিনিট কথা পাতিমনে?"
-  ],
-  gu: [
-    "નમસ્તે {name}! એક parent તરીકે બાળકોનું ભવિષ્ય હંમેશા મનમાં રહે છે એ હું જાણું છું. બાળકોના ભણતરની વ્યવસ્થા થઈ જાય એમાં families-ને મદદ કરું છું. આ અઠવાડિયે ૧૦ મિનિટ મળીએ?"
-  ]
-},
-
-tax_saving: {
-  en: [
-    "Hi {name}! Tax season aa raha hai and many {occupation} people I work with are surprised by how much they can save. Can I meet you for just 10 minutes? No commitment — just useful information that can save you money.",
-    "Hello {name}! Most {occupation} people don't know the full tax benefits they can get. I've been helping people understand this in just one short meeting. Would you have 10 minutes for a quick chai this week?"
-  ],
-  hi: [
-    "नमस्ते {name} जी! Tax season आ रहा है और बहुत से {occupation} लोग जिनके साथ काम करता हूँ, हैरान होते हैं कि कितना बचा सकते हैं। बस 10 मिनट मिल सकते हैं? कोई commitment नहीं — बस काम की जानकारी जो पैसे बचाएगी।",
-    "हेलो {name} जी! ज़्यादातर {occupation} लोगों को पूरी tax benefits की जानकारी नहीं होती। मैं बस एक छोटी सी meeting में ये समझा देता हूँ। इस हफ्ते 10 मिनट चाय पर मिलें?"
-  ],
-  bn: [
-    "নমস্কার {name}! Tax season আসছে আর অনেক {occupation} মানুষ আমার কাছ থেকে জেনে অবাক হন কতটা বাঁচাতে পারেন। ১০ মিনিট দেখা করবেন? কোনো commitment নেই — শুধু কাজের তথ্য।"
-  ],
-  ta: [
-    "வணக்கம் {name}! Tax season வரப்போகிறது, பல {occupation} மக்கள் எவ்வளவு சேமிக்க முடியும் என்பதில் ஆச்சரியப்படுகிறார்கள். 10 நிமிடம் சந்திக்கலாமா? commitment இல்லை — உதவியான தகவல் மட்டும்."
-  ],
-  te: [
-    "నమస్కారం {name}! Tax season వస్తోంది, చాలా మంది {occupation} వారు ఎంత ఆదా చేయవచ్చో తెలిసి ఆశ్చర్యపోతారు. 10 నిమిషాలు కలుద్దామా? commitment లేదు — ఉపయోగకరమైన సమాచారం మాత్రమే."
-  ],
-  mr: [
-    "नमस्कार {name}! Tax season येतोय आणि बरेच {occupation} लोक ऐकून आश्चर्यचकित होतात ते किती वाचवू शकतात. १० मिनिटं भेटता येईल? कोणतीही commitment नाही — फक्त उपयुक्त माहिती."
-  ],
-  as: [
-    "নমস্কাৰ {name}! Tax season আহিছে আৰু বহু {occupation} মানুহে জানি আচৰিত হয় কিমান সঞ্চয় কৰিব পাৰে। ১০ মিনিট দেখা কৰিমনে? কোনো commitment নাই — কেৱল কামৰ তথ্য।"
-  ],
-  gu: [
-    "નમસ્તે {name}! Tax season આવી રહ્યો છે અને ઘણા {occupation} લોકો જાણીને આશ્ચર્ય પામે છે કેટલું બચાવી શકે છે. ૧૦ મિનિટ મળીશું? કોઈ commitment નહીં — ફક્ત ઉપયોગી માહિતી."
-  ]
-},
-
-retirement: {
-  en: [
-    "Hi {name}, I know retirement feels far away at {age} — but the people who started planning early are the most relaxed today. I work with {occupation} people like you on this. Can we meet for 10 minutes? Just a friendly chat, no pressure.",
-    "Hello {name}! I recently met a {occupation} person your age who told me — \"I wish someone had this conversation with me 5 years ago.\" I don't want you to feel that way. Can I request just 10 minutes of your time this week?"
-  ],
-  hi: [
-    "नमस्ते {name} जी! {age} साल में retirement बहुत दूर लगती है — लेकिन जिन लोगों ने जल्दी शुरू किया वो आज सबसे tension-free हैं। मैं आपके जैसे {occupation} लोगों के साथ इसी पर काम करता हूँ। 10 मिनट मिलेंगे? बस friendly बातचीत, कोई pressure नहीं।",
-    "हेलो {name} जी! हाल ही में एक {occupation} इंसान से मिला आपकी उम्र के — उन्होंने कहा \"काश किसी ने 5 साल पहले मुझसे ये बात की होती।\" मैं नहीं चाहता कि आप भी ऐसा feel करें। बस 10 मिनट का time दे सकते हैं?"
-  ],
-  bn: [
-    "নমস্কার {name}! {age} বছর বয়সে retirement অনেক দূর মনে হয় — কিন্তু যারা আগে শুরু করেছেন তারা আজ সবচেয়ে tension-free। আমি {occupation} মানুষদের সাথে এই নিয়ে কাজ করি। ১০ মিনিট দেখা করবেন?"
-  ],
-  ta: [
-    "வணக்கம் {name}! {age} வயதில் retirement மிகவும் தூரமாக தோன்றும் — ஆனால் சீக்கிரம் தொடங்கியவர்கள் இன்று மிகவும் நிம்மதியாக இருக்கிறார்கள். {occupation} மக்களுடன் இதில் பணிபுரிகிறேன். 10 நிமிடம் சந்திக்கலாமா?"
-  ],
-  te: [
-    "నమస్కారం {name}! {age} ఏళ్ల వయసులో retirement చాలా దూరంగా అనిపిస్తుంది — కానీ ముందుగా మొదలుపెట్టిన వారు ఈరోజు అత్యంత tension-free-గా ఉన్నారు. {occupation} వారితో దీనిపై పని చేస్తాను. 10 నిమిషాలు కలుద్దామా?"
-  ],
-  mr: [
-    "नमस्कार {name}! {age} वर्षांत retirement खूप दूर वाटतं — पण ज्यांनी लवकर सुरू केलं ते आज सर्वात tension-free आहेत. मी {occupation} लोकांसोबत यावर काम करतो. १० मिनिटं भेटू?"
-  ],
-  as: [
-    "নমস্কাৰ {name}! {age} বছৰত retirement বহু দূৰৰ কথা যেন লাগে — কিন্তু যিসকলে আগতীয়াকৈ আৰম্ভ কৰিছে তেওঁলোক আজি সবাতোকৈ tension-free। {occupation} মানুহৰ সৈতে এই বিষয়ত কাম কৰোঁ। ১০ মিনিট দেখা হ'বনে?"
-  ],
-  gu: [
-    "નમસ્તે {name}! {age} વર્ષે retirement ખૂબ દૂરનું લાગે છે — પણ જેમણે વહેલું શરૂ કર્યું તેઓ આજે સૌથી tension-free છે. {occupation} લોકો સાથે આ પર કામ કરું છું. ૧૦ મિનિટ મળીશું?"
-  ]
-},
-
-health_angle: {
-  en: [
-    "Hi {name}, hope you're keeping well! I talk to a lot of {occupation} people about something most of us ignore — being ready for unexpected medical expenses. It's not a fun topic but it makes a big difference. Can we meet for just 10 minutes?",
-    "Hello {name}! Many people I work with say their biggest worry is not the hospital bill — it's how it affects the family's savings. I help people plan for this. Would you have 10 minutes for a quick meeting?"
-  ],
-  hi: [
-    "नमस्ते {name} जी! उम्मीद है सब अच्छा चल रहा है! मैं बहुत से {occupation} लोगों से एक ऐसी बात पर बात करता हूँ जो हम सब ignore करते हैं — अचानक medical खर्चों के लिए तैयार रहना। अच्छा topic नहीं है लेकिन बहुत ज़रूरी है। बस 10 मिनट मिल सकते हैं?",
-    "हेलो {name} जी! बहुत लोग कहते हैं कि उनकी सबसे बड़ी चिंता hospital का bill नहीं — बल्कि family की savings पर असर है। मैं लोगों को इसकी planning में help करता हूँ। 10 मिनट की meeting हो सकती है?"
-  ],
-  bn: [
-    "নমস্কার {name}! আশা করি ভালো আছেন! আমি অনেক {occupation} মানুষের সাথে একটা বিষয়ে কথা বলি যেটা আমরা সবাই ignore করি — হঠাৎ medical খরচের জন্য তৈরি থাকা। ১০ মিনিট দেখা করবেন?"
-  ],
-  ta: [
-    "வணக்கம் {name}! நீங்கள் நலமாக இருப்பீர்கள் என நம்புகிறேன்! பல {occupation} மக்களிடம் நாம் அனைவரும் ignore செய்யும் ஒரு விஷயத்தைப் பற்றி பேசுகிறேன் — திடீர் medical செலவுகளுக்கு தயாராக இருப்பது. 10 நிமிடம் சந்திக்கலாமா?"
-  ],
-  te: [
-    "నమస్కారం {name}! బాగున్నారని ఆశిస్తున్నాను! చాలా మంది {occupation} వారితో మనమంతా ignore చేసే ఒక విషయం గురించి మాట్లాడతాను — అకస్మాత్తు medical ఖర్చులకు సిద్ధంగా ఉండటం. 10 నిమిషాలు కలుద్దామా?"
-  ],
-  mr: [
-    "नमस्कार {name}! उमेद आहे सर्व ठीक आहे! मी अनेक {occupation} लोकांशी एका गोष्टीवर बोलतो जी आपण सगळे ignore करतो — अचानक medical खर्चासाठी तयार राहणे. १० मिनिटं भेटता येईल?"
-  ],
-  as: [
-    "নমস্কাৰ {name}! আশা কৰোঁ ভালে আছে! বহু {occupation} মানুহৰ সৈতে এটা বিষয়ত কথা পাতোঁ যিটো আমি সকলোৱে ignore কৰোঁ — হঠাৎ medical খৰচৰ বাবে প্ৰস্তুত থকা। ১০ মিনিট কথা পাতিমনে?"
-  ],
-  gu: [
-    "નમસ્તે {name}! આશા છે બધું સારું છે! ઘણા {occupation} લોકો સાથે એક વાત પર વાત કરું છું જે આપણે બધા ignore કરીએ છીએ — અચાનક medical ખર્ચ માટે તૈયાર રહેવું. ૧૦ મિનિટ મળીશું?"
-  ]
-},
-
-festival_occasion: {
-  en: [
-    "Hi {name}, wishing you a very happy {occasion}! 🙏 Many families use this time to think about something meaningful for their loved ones' future. I help {occupation} people with exactly this. Can we meet for 10 minutes after the celebrations? Just a friendly chat.",
-    "Hello {name}! Happy {occasion}! 🎉 A lot of people I know use this special time to start something good for their family. I'd love to share a few ideas — can we meet for just 10 minutes? You pick the time.",
-    "Hi {name}, {occasion} ki bahut bahut shubhkamnayein! 🙏 This is actually the best time to do something special for your family's future. Can I meet you for a quick 10-minute chai after {occasion}?"
-  ],
-  hi: [
-    "नमस्ते {name} जी! {occasion} की बहुत-बहुत शुभकामनाएं! 🙏 बहुत से लोग इस मौके पर अपनों के future के लिए कुछ अच्छा करना चाहते हैं। मैं {occupation} लोगों की इसमें help करता हूँ। {occasion} के बाद 10 मिनट चाय पर मिलें? बस friendly बातचीत।",
-    "हेलो {name} जी! {occasion} मुबारक! 🎉 बहुत से लोग इस खास मौके पर family के लिए कुछ meaningful शुरू करते हैं। 10 मिनट मिलकर बात करें? आप time बताइए।",
-    "नमस्ते {name} जी! {occasion} की शुभकामनाएं! 🙏 ये actually सबसे अच्छा time है family के future के लिए कुछ special करने का। {occasion} के बाद 10 मिनट चाय पर मिल सकते हैं?"
-  ],
-  bn: [
-    "নমস্কার {name}! {occasion}-এর অনেক শুভেচ্ছা! 🙏 অনেক মানুষ এই সময়ে প্রিয়জনদের ভবিষ্যতের জন্য কিছু ভালো করতে চান। {occasion}-এর পর ১০ মিনিট চায়ে কথা বলা যাবে?"
-  ],
-  ta: [
-    "வணக்கம் {name}! {occasion} வாழ்த்துக்கள்! 🙏 பலர் இந்த நேரத்தில் குடும்பத்தின் எதிர்காலத்திற்காக ஏதாவது நல்லது செய்ய விரும்புகிறார்கள். {occasion}-க்குப் பிறகு 10 நிமிடம் சந்திக்கலாமா?"
-  ],
-  te: [
-    "నమస్కారం {name}! {occasion} శుభాకాంక్షలు! 🙏 చాలా మంది ఈ సమయంలో ప్రియమైన వారి భవిష్యత్తు కోసం ఏదైనా మంచిది చేయాలనుకుంటారు. {occasion} తర్వాత 10 నిమిషాలు కలుద్దామా?"
-  ],
-  mr: [
-    "नमस्कार {name}! {occasion} च्या खूप शुभेच्छा! 🙏 अनेक लोक या वेळी आपल्या माणसांच्या भविष्यासाठी काहीतरी चांगलं करू इच्छितात. {occasion} नंतर १० मिनिटं भेटूया?"
-  ],
-  as: [
-    "নমস্কাৰ {name}! {occasion}-ৰ বহু শুভেচ্ছা! 🙏 বহু মানুহে এই সময়ত প্ৰিয়জনৰ ভৱিষ্যতৰ বাবে ভাল কিবা কৰিব বিচাৰে। {occasion}-ৰ পিছত ১০ মিনিট চাহত কথা পাতিমনে?"
-  ],
-  gu: [
-    "નમસ્તે {name}! {occasion}ની ખૂબ શુભેચ્છા! 🙏 ઘણા લોકો આ સમયે પ્રિયજનોના ભવિષ્ય માટે કંઈક સારું કરવા ઈચ્છે છે. {occasion} પછી ૧૦ મિનિટ ચા પર મળીએ?"
-  ]
-},
-
-general_intro: {
-  en: [
-    "Hi {name}! I help {occupation} people make sure their family is financially safe. It's just a simple 10-minute conversation but it can make a big difference. Can we meet this week? You pick the time.",
-    "Hello {name}! I got your number through a reference. I work with {occupation} people on financial planning — nothing pushy, just a friendly 10-minute meeting. When are you free?",
-    "Hi {name}, I know we haven't talked before so I'll keep it simple — I help working people like you protect their family's future. Many {occupation} people tell me it was the most useful 10 minutes they spent. Can we meet?"
-  ],
-  hi: [
-    "नमस्ते {name} जी! मैं {occupation} लोगों की family को financially safe करने में help करता हूँ। बस 10 मिनट की simple बातचीत है लेकिन बहुत काम की है। इस हफ्ते मिल सकते हैं? आप time बताइए।",
-    "हेलो {name} जी! आपका number एक reference से मिला। मैं {occupation} लोगों को financial planning में help करता हूँ — कोई pressure नहीं, बस 10 मिनट की friendly meeting। कब free हैं?",
-    "नमस्ते {name} जी! हमने पहले बात नहीं की है तो simple रखता हूँ — मैं आपके जैसे working लोगों की family का future safe करने में help करता हूँ। बहुत से {occupation} लोग कहते हैं कि ये सबसे useful 10 मिनट थे। मिल सकते हैं?"
-  ],
-  bn: [
-    "নমস্কার {name}! আমি {occupation} মানুষদের পরিবারকে financially safe করতে সাহায্য করি। মাত্র ১০ মিনিটের simple কথা কিন্তু অনেক কাজের। এই সপ্তাহে দেখা হবে? আপনি সময় বলুন।",
-    "হেলো {name}! আপনার number একটা reference থেকে পেয়েছি। {occupation} মানুষদের financial planning-এ সাহায্য করি — কোনো pressure নেই, ১০ মিনিটের friendly meeting। কখন free?"
-  ],
-  ta: [
-    "வணக்கம் {name}! {occupation} மக்களின் குடும்பத்தை financially safe-ஆக வைக்க உதவுகிறேன். வெறும் 10 நிமிட simple உரையாடல் ஆனால் மிகவும் பயனுள்ளது. இந்த வாரம் சந்திக்கலாமா? நீங்கள் நேரம் சொல்லுங்கள்.",
-    "வணக்கம் {name}! உங்கள் number ஒரு reference-லிருந்து கிடைத்தது. {occupation} மக்களுக்கு financial planning-ல் உதவுகிறேன் — pressure இல்லை, 10 நிமிட friendly meeting. எப்போது free?"
-  ],
-  te: [
-    "నమస్కారం {name}! {occupation} వారి కుటుంబాన్ని financially safe-గా చేయడంలో సహాయం చేస్తాను. 10 నిమిషాల simple సంభాషణ కానీ చాలా ఉపయోగకరం. ఈ వారంలో కలుద్దామా? మీరు time చెప్పండి.",
-    "హలో {name}! మీ number ఒక reference నుండి వచ్చింది. {occupation} వారికి financial planning-లో సహాయం చేస్తాను — pressure లేదు, 10 నిమిషాల friendly meeting. ఎప్పుడు free?"
-  ],
-  mr: [
-    "नमस्कार {name}! मी {occupation} लोकांच्या कुटुंबाला financially safe करायला मदत करतो. फक्त १० मिनिटांची simple गोष्ट पण खूप उपयुक्त. या आठवड्यात भेटूया? तुम्ही वेळ सांगा.",
-    "नमस्कार {name}! तुमचा number एका reference कडून मिळाला. {occupation} लोकांना financial planning मध्ये मदत करतो — pressure नाही, फक्त १० मिनिटांची friendly meeting. कधी free आहात?"
-  ],
-  as: [
-    "নমস্কাৰ {name}! মই {occupation} মানুহৰ পৰিয়ালক financially safe কৰাত সহায় কৰোঁ। মাত্ৰ ১০ মিনিটৰ simple কথা কিন্তু বহু কামৰ। এই সপ্তাহত দেখা হ'বনে? আপুনি সময় কওক।"
-  ],
-  gu: [
-    "નમસ્તે {name}! હું {occupation} લોકોના પરિવારને financially safe કરવામાં મદદ કરું છું. ફક્ત ૧૦ મિનિટની simple વાત પણ ખૂબ ઉપયોગી. આ અઠવાડિયે મળીએ? તમે time કહો.",
-    "નમસ્તે {name}! તમારો number એક reference-થી મળ્યો. {occupation} લોકોને financial planning-માં મદદ કરું છું — pressure નહીં, ૧૦ મિનિટની friendly meeting. ક્યારે free છો?"
-  ]
-}
-};
-
-// ── UI TEXT — Simple English for agents across India ──
-const UI_TEXT = {
-  en: {
-    welcome: "Hello! I'm **Akash** — your insurance sales buddy! 👋\n\nTell me about your lead and I'll create the perfect first message to get a meeting with them. Let's start!",
-    askLang: "First — what **language** should the message be in?",
-    askName: "Great! 👍 Now tell me, what is your **lead's name**?",
-    askAge: "How old is **{name}**? (type a number)",
-    askOccupation: "What does **{name}** do for work?\n\nChoose below or type:",
-    askFamily: "What is **{name}**'s family situation?",
-    askOccasion: "Any upcoming **festival or occasion** to use in the message?",
-    askConcern: "Last question! What is **{name}** most likely worried about?",
-    generating: "Creating the best messages for **{name}**... 🧊✨",
-    resultTitle: "Here are your messages — pick the one that feels right! 👇",
-    tryAnother: "🔄 More Messages",
-    startOver: "🆕 New Lead"
+  outflowRanges: {
+    '< 40k': 30000,
+    '40k – 1 lakh': 60000,
+    '1 – 1.5 lakhs': 115000,
+    '1.5 lakhs +': 200000
+  },
+  wealthRanges: {
+    '< 10L': 500000,
+    '10L – 50L': 3000000,
+    '50L – 1Cr': 7500000,
+    '1Cr – 3Cr': 20000000,
+    '3Cr +': 50000000
+  },
+  goals: {
+    'Child education':             { costToday: 1500000, inflationType: 'Education' },
+    'Child wedding':               { costToday: 2500000, inflationType: 'General' },
+    'Home upgrade':                { costToday: 2000000, inflationType: 'General' },
+    'Retirement lifestyle':        { costToday: 10000000, inflationType: 'General' },
+    'Medical / parent care':       { costToday: 2500000, inflationType: 'Medical' },
+    'Business / entrepreneurship': { costToday: 3000000, inflationType: 'General' }
+  },
+  productCatalog: {
+    'Complete lifestyle support':           { product: 'Digit Glow Plus', explain: 'Complete coverage — term life + critical illness + accident + hospital cash' },
+    'Pure regular withdrawal for life':     { product: 'Digit Pension Plan (Annuity) — Coming Soon', explain: 'Standard annuity / retirement income for life' },
+    'Hybrid wealth building and drawdown':  { product: 'Digit ICON', explain: 'Long-term non-par savings with regular payouts after 55' },
+    'Long term corpus building':            { product: 'ULIP', explain: 'Market-linked plan with riders, 10+ year tenure' },
+    'Medium term liquidity':                { product: 'PAR / ULIP', explain: 'Participating plan or medium-term ULIP for liquidity' },
+    'Pure goal based in long term':         { product: 'Digit ICON', explain: 'Lump-sum payout with non-par savings and riders' },
+    'Basic lifestyle support':              { product: 'Digit Glow Plus', explain: 'Simple term life cover without morbidity riders' }
   }
 };
 
-const OCCUPATIONS = ['Salaried / Office Job','Business Owner','Doctor / Medical','Government Job','Teacher / Professor','Self Employed / Freelancer','Homemaker','Retired / Senior'];
-const FAMILY_OPTIONS = ['Single / Unmarried','Newly Married','Married + Kids','Parents / Elderly'];
-const CONCERNS = [
-  { label: "Family's Safety 👨‍👩‍👧", key: "family" },
-  { label: "Child's Education 📚", key: "children" },
-  { label: "Tax Saving 💰", key: "tax" },
-  { label: "Retirement Planning 🏖️", key: "retirement" },
-  { label: "Health / Medical 🏥", key: "health" },
-  { label: "Not Sure / General", key: "general" }
-];
+function runRecoEngine(d) {
+  const R = {};
+  // Resolve midpoints
+  R.monthlyOutflow = CONFIG.outflowRanges[d.outflow] || 60000;
+  R.wealthMidpoint = CONFIG.wealthRanges[d.wealth] || 3000000;
+  R.mindset = d.mindset === 'Live long' ? 1 : 0;
+  R.age = d.age || 35;
+  R.marital = d.marital || 'Single';
+  R.dependents = d.dependents || 0;
+  R.carColour = d.carColour || 'White';
 
-// Occupation display to script-friendly mapping
-function cleanOccupation(occ) {
-  const map = {
-    'Salaried / Office Job': 'salaried',
-    'Business Owner': 'business',
-    'Doctor / Medical': 'medical',
-    'Government Job': 'government',
-    'Teacher / Professor': 'teaching',
-    'Self Employed / Freelancer': 'self-employed',
-    'Homemaker': 'homemaker',
-    'Retired / Senior': 'retired'
+  // Derived
+  R.annualOutflow = R.monthlyOutflow * 12;
+  R.incomeProxy = R.annualOutflow / CONFIG.expenseToIncomeRatio;
+  R.wealthToSpend = R.wealthMidpoint / R.annualOutflow;
+  R.projectedMonthly20y = R.monthlyOutflow * Math.pow(1 + CONFIG.inflationGeneral, CONFIG.horizon);
+
+  // Future goals
+  R.goalDetails = {};
+  R.totalGoals = 0;
+  const selectedGoals = d.goals || {};
+  for (const [goal, cfg] of Object.entries(CONFIG.goals)) {
+    if (selectedGoals[goal]) {
+      const infRate = cfg.inflationType === 'Education' ? CONFIG.inflationEducation :
+                      cfg.inflationType === 'Medical' ? CONFIG.inflationMedical : CONFIG.inflationGeneral;
+      const futureCost = cfg.costToday * Math.pow(1 + infRate, CONFIG.horizon);
+      R.goalDetails[goal] = futureCost;
+      R.totalGoals += futureCost;
+    }
+  }
+
+  // Protection cover
+  const isMarriedOrDep = R.marital === 'Married' || R.dependents > 0;
+  const coverMultiple = isMarriedOrDep ? CONFIG.coverMultipleMarried : CONFIG.coverMultipleSingle;
+  R.coverBase = R.incomeProxy * coverMultiple;
+  R.goalBuffer = R.totalGoals * CONFIG.goalBufferFactor;
+  R.coverRaw = R.coverBase + R.goalBuffer;
+  R.coverRounded = Math.round(R.coverRaw / CONFIG.coverRoundingStep) * CONFIG.coverRoundingStep;
+
+  // Premium budget
+  R.premiumSoft = R.monthlyOutflow * CONFIG.premiumBudgetSoft;
+  R.premiumHard = R.monthlyOutflow * CONFIG.premiumBudgetHard;
+
+  // Scoring (7 types, 0–100) — exact Excel formulas
+  const hasGoals = R.totalGoals > 0 ? 1 : 0;
+  const isMarried = isMarriedOrDep ? 1 : 0;
+  const lowWealth = R.wealthToSpend < 3 ? 1 : 0;
+  const midWealth = (R.wealthToSpend >= 3 && R.wealthToSpend < 5) ? 1 : 0;
+  const highWealth = R.wealthToSpend >= 5 ? 1 : 0;
+  const longMind = R.mindset;
+  const shortMind = 1 - R.mindset;
+  const isRed = R.carColour === 'Red' ? 1 : 0;
+  const ageBucket50 = R.age >= 50 ? 20 : (R.age >= 40 ? 10 : 0);
+  const ageBucketYoung = R.age <= 35 ? 15 : (R.age <= 45 ? 5 : 0);
+  const age55 = R.age >= 55 ? 1 : 0;
+
+  R.scores = {
+    'Complete lifestyle support':           Math.min(100, 30 + 25*isMarried + 20*lowWealth + 15*hasGoals + 10*longMind + ageBucket50),
+    'Pure regular withdrawal for life':     Math.min(100, 20 + 25*longMind + 25*highWealth + ageBucket50 + 10*age55),
+    'Hybrid wealth building and drawdown':  Math.min(100, 25 + 25*longMind + 20*highWealth + 15*hasGoals + ageBucketYoung),
+    'Long term corpus building':            Math.min(100, 25 + 25*longMind + 20*midWealth + 20*hasGoals + ageBucketYoung),
+    'Medium term liquidity':                Math.min(100, 25 + 25*shortMind + 20*lowWealth + 10*isRed + 10*(hasGoals===0?1:0)),
+    'Pure goal based in long term':         Math.min(100, 20 + 35*hasGoals + 25*longMind + 10*midWealth + 10*highWealth + ageBucketYoung),
+    'Basic lifestyle support':              Math.min(100, 25 + 25*isMarried + 20*lowWealth + 10*shortMind + 10*hasGoals)
   };
-  return map[occ] || occ;
+
+  // Rank
+  const sorted = Object.entries(R.scores).sort((a,b) => b[1] - a[1]);
+  R.top1 = { type: sorted[0][0], score: sorted[0][1] };
+  R.top2 = { type: sorted[1][0], score: sorted[1][1] };
+  R.allRanked = sorted;
+
+  // Bundle
+  if (isMarriedOrDep) {
+    if (R.top1.type === 'Basic lifestyle support' || R.top1.type === 'Complete lifestyle support') {
+      R.bundle = R.top1.type + ' + ' + R.top2.type;
+    } else {
+      R.bundle = 'Basic lifestyle support + ' + R.top1.type;
+    }
+  } else {
+    R.bundle = 'Starter lifestyle support + ' + R.top1.type;
+  }
+
+  // Map to products
+  R.top1Product = CONFIG.productCatalog[R.top1.type] || {};
+  R.top2Product = CONFIG.productCatalog[R.top2.type] || {};
+
+  // Confidence
+  R.confidence = 100;
+  if (!d.outflow) R.confidence -= 20;
+  if (!d.wealth) R.confidence -= 20;
+  if (Object.keys(selectedGoals).filter(k => selectedGoals[k]).length === 0) R.confidence -= 15;
+  if (!d.marital) R.confidence -= 10;
+  R.confidence = Math.max(0, R.confidence);
+
+  return R;
 }
 
-// ── CHAT ENGINE ──
-function getTime() { return new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:true}); }
+// ═══════════════════════════════════════════════
+// FESTIVAL CALENDAR (2026 accurate, future-only)
+// ═══════════════════════════════════════════════
+const FESTIVALS=[{name:'Holi',dates:[[2026,3,10],[2027,2,28]]},{name:'Ugadi / Gudi Padwa',dates:[[2026,3,19],[2027,3,9]]},{name:'Eid ul-Fitr',dates:[[2026,3,20],[2027,3,10]]},{name:'Ram Navami',dates:[[2026,3,28],[2027,3,18]]},{name:'Baisakhi / Vishu',dates:[[2026,4,14],[2027,4,14]]},{name:'Akshaya Tritiya',dates:[[2026,4,26],[2027,4,16]]},{name:'Eid ul-Adha',dates:[[2026,5,27],[2027,5,17]]},{name:'Rath Yatra',dates:[[2026,6,23],[2027,6,13]]},{name:'Raksha Bandhan',dates:[[2026,8,8],[2027,7,29]]},{name:'Independence Day',dates:[[2026,8,15],[2027,8,15]]},{name:'Janmashtami',dates:[[2026,8,15],[2027,8,5]]},{name:'Ganesh Chaturthi',dates:[[2026,8,26],[2027,8,16]]},{name:'Onam',dates:[[2026,9,4],[2027,8,25]]},{name:'Navratri starts',dates:[[2026,9,22],[2027,9,11]]},{name:'Dussehra',dates:[[2026,10,1],[2027,9,21]]},{name:'Karwa Chauth',dates:[[2026,10,11],[2027,10,1]]},{name:'Diwali',dates:[[2026,10,19],[2027,10,8]]},{name:'Bhai Dooj',dates:[[2026,10,21],[2027,10,10]]},{name:'Guru Nanak Jayanti',dates:[[2026,11,8],[2027,10,29]]},{name:'Christmas',dates:[[2026,12,25],[2027,12,25]]},{name:'New Year',dates:[[2027,1,1],[2028,1,1]]},{name:'Makar Sankranti / Pongal',dates:[[2027,1,14],[2028,1,14]]},{name:'Republic Day',dates:[[2027,1,26],[2028,1,26]]},{name:'Maha Shivaratri',dates:[[2027,2,13],[2028,2,2]]}];
 
-function addMessage(text, type='bot', extra='') {
-  const ca = document.getElementById('chatArea'), div = document.createElement('div');
-  div.className = `message ${type}`;
-  let html = text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
-  div.innerHTML = `${html}${extra}<div class="msg-time">${getTime()}${type==='user'?'<span class="ticks">✓✓</span>':''}</div>`;
-  ca.appendChild(div); ca.scrollTop = ca.scrollHeight; return div;
+function getUpcomingFestivals(){const today=new Date();today.setHours(0,0,0,0);const results=[];FESTIVALS.forEach(f=>{for(const[y,m,d]of f.dates){const fd=new Date(y,m-1,d),diff=Math.ceil((fd-today)/864e5);if(diff>=1&&diff<=90){let tag;if(diff<=7)tag='this week!';else if(diff<=14)tag='next week';else if(diff<=30)tag=`~${Math.ceil(diff/7)} weeks away`;else tag=`~${Math.round(diff/30)} month${diff>45?'s':''} away`;results.push({name:f.name,daysAway:diff,label:`${f.name} (${tag})`});break;}}});results.sort((a,b)=>a.daysAway-b.daysAway);return results.slice(0,5);}
+
+// ═══════════════════════════════════════════════
+// LANGUAGES & ICEBREAKER SCRIPTS (softened)
+// ═══════════════════════════════════════════════
+const LANGUAGES={en:{name:'English',native:'English',flag:'🇬🇧'},hi:{name:'Hindi',native:'हिन्दी',flag:'🇮🇳'},bn:{name:'Bengali',native:'বাংলা',flag:'🇮🇳'},ta:{name:'Tamil',native:'தமிழ்',flag:'🇮🇳'},te:{name:'Telugu',native:'తెలుగు',flag:'🇮🇳'},mr:{name:'Marathi',native:'मराठी',flag:'🇮🇳'},as:{name:'Assamese',native:'অসমীয়া',flag:'🇮🇳'},gu:{name:'Gujarati',native:'ગુજરાતી',flag:'🇮🇳'}};
+
+const SCRIPTS = {
+family_young_married: {
+  en: [
+    "Hi {name}, congratulations on your new life! 🎉 I help newly married couples plan for each other's financial safety — it's something most people don't think about early on. If you ever have a few free minutes, I'd love to share some useful ideas. Only if you're comfortable, of course!",
+    "Hello {name}! I work with many young couples on one important thing — making sure both partners are financially covered for each other. Whenever it's convenient for you, I'd really appreciate a short conversation. No rush at all!",
+    "Hi {name}, hope married life is going great! 😊 Many young couples I've spoken with say they're glad they had a small chat about protecting each other's future. If you're open to it, I'd love to have a similar conversation with you sometime — completely at your convenience."
+  ],
+  hi: [
+    "नमस्ते {name} जी! शादी की बहुत-बहुत बधाई! 🎉 मैं newly married couples को एक-दूसरे की financial safety plan करने में help करता हूँ। अगर कभी आपके पास कुछ मिनट हों, तो कुछ काम की बातें share करना चाहूँगा। बिलकुल आपकी सुविधा के अनुसार!",
+    "हेलो {name} जी! मैं कई young couples के साथ एक ज़रूरी चीज़ पर काम करता हूँ — एक-दूसरे की financial security। जब भी आपको सुविधा हो, एक छोटी सी बात करना चाहूँगा। कोई जल्दी नहीं है!"
+  ],
+  bn:["নমস্কার {name}! নতুন জীবনের শুভেচ্ছা! 🎉 আমি newly married couples-কে financial safety plan করতে সাহায্য করি। আপনার যখন সুবিধা হয়, কিছু কাজের কথা share করতে চাই। সম্পূর্ণ আপনার সুবিধামতো!"],
+  ta:["வணக்கம் {name}! புதிய வாழ்க்கைக்கு வாழ்த்துக்கள்! 🎉 நான் newly married couples-க்கு financial safety plan செய்ய உதவுகிறேன். உங்களுக்கு வசதியான நேரத்தில் சிறிது நேரம் பேசலாமா? எந்த அவசரமும் இல்லை!"],
+  te:["నమస్కారం {name}! కొత్త జీవితానికి శుభాకాంక్షలు! 🎉 నేను newly married couples-కి financial safety plan చేయడంలో సహాయం చేస్తాను. మీకు అనువైన సమయంలో share చేయాలనుకుంటున్నాను. ఏ తొందరా లేదు!"],
+  mr:["नमस्कार {name}! लग्नाच्या शुभेच्छा! 🎉 मी नवविवाहित जोडप्यांना financial safety plan करायला मदत करतो. तुम्हाला सोयीचं असेल तेव्हा काही उपयुक्त गोष्टी share करायला आवडेल. कोणतीही घाई नाही!"],
+  as:["নমস্কাৰ {name}! নতুন জীৱনৰ শুভেচ্ছা! 🎉 মই newly married দম্পতীক financial safety plan কৰাত সহায় কৰোঁ। আপোনাৰ যেতিয়া সুবিধা হয় কথা পাতিব বিচাৰোঁ। কোনো খৰখৰীয়া নাই!"],
+  gu:["નમસ્તે {name}! લગ્નની શુભેચ્છા! 🎉 હું newly married couples-ને financial safety plan કરવામાં મદદ કરું છું. તમને અનુકૂળ હોય ત્યારે share કરવા ઈચ્છું છું. કોઈ ઉતાવળ નથી!"]
+},
+family_with_kids: {
+  en: [
+    "Hi {name}, as a parent I'm sure your child's future is always on your mind. I help families make sure their kids' education is taken care of no matter what happens. If you're open to it, I'd love to share what other parents have found helpful — whenever it suits you.",
+    "Hello {name}! Many parents I've worked with had just one worry — \"Is my child's future safe?\" I help them get that peace of mind. If you ever feel like having a short chat about this, I'm always available at your convenience.",
+    "Hi {name}, a lot of {occupation} parents have told me that one small conversation gave them complete peace about their child's future. If you'd like, I'd be happy to have a similar chat with you too — no pressure at all."
+  ],
+  hi:["नमस्ते {name} जी! एक parent होने के नाते बच्चों का future हमेशा दिमाग में रहता है। मैं families की help करता हूँ कि बच्चों की पढ़ाई का इंतेज़ाम हो जाए। अगर आप चाहें तो बता सकता हूँ बाकी parents क्या कर रहे हैं — पूरी तरह आपकी सुविधा अनुसार।","हेलो {name} जी! बहुत से {occupation} parents ने कहा कि एक छोटी सी बातचीत से बच्चे के future को लेकर पूरा chain हो गया। अगर आपको भी ठीक लगे, तो ऐसी ही बात करना चाहूँगा — कोई pressure नहीं।"],
+  bn:["নমস্কার {name}! সন্তানের ভবিষ্যৎ সবসময় মাথায় থাকে। বাচ্চাদের পড়াশোনার ব্যবস্থা হোক সেজন্য সাহায্য করি। আপনার যখন ইচ্ছা হয় কথা বলতে পারি — সম্পূর্ণ আপনার সুবিধামতো।"],
+  ta:["வணக்கம் {name}! குழந்தையின் எதிர்காலம் எப்போதும் நினைவில் இருக்கும் என்று தெரியும். குழந்தைகளின் படிப்பு safe-ஆக இருக்க உதவுகிறேன். உங்களுக்கு விருப்பமிருந்தால் share செய்ய விரும்புகிறேன் — எந்த அவசரமும் இல்லை."],
+  te:["నమస్కారం {name}! పిల్లల భవిష్యత్తు ఎప్పుడూ మనసులో ఉంటుంది. పిల్లల చదువు safe-గా ఉండేలా సహాయం చేస్తాను. మీకు ఇష్టమైతే share చేయగలను — ఏ తొందరా లేదు."],
+  mr:["नमस्कार {name}! मुलांचं भविष्य नेहमी डोक्यात असतं. मुलांच्या शिक्षणाची व्यवस्था होण्यासाठी मदत करतो. तुम्हाला ठीक वाटलं तर सांगायला आवडेल — कोणतीही घाई नाही."],
+  as:["নমস্কাৰ {name}! সন্তানৰ ভৱিষ্যত সদায় মনত থাকে। পঢ়াশুনাৰ ব্যৱস্থা হোৱাত সহায় কৰোঁ। আপোনাৰ যেতিয়া ইচ্ছা হয় কথা পাতিব পাৰোঁ — কোনো খৰখৰীয়া নাই।"],
+  gu:["નમસ્તે {name}! બાળકોનું ભવિષ્ય હંમેશા મનમાં રહે છે. ભણતરની વ્યવસ્થા થાય એમાં મદદ કરું છું. તમને ઠીક લાગે ત્યારે share કરવા ઈચ્છું છું — કોઈ ઉતાવળ નથી."]
+},
+tax_saving: {
+  en: [
+    "Hi {name}! Tax season is coming up and many {occupation} people I've worked with were pleasantly surprised by how much they could save. If you'd like, I'd be happy to share some useful information — completely at your convenience, no commitment at all.",
+    "Hello {name}! Most {occupation} people don't know the full tax benefits available to them. If you're ever interested, I'd love to share — just let me know whenever it suits you."
+  ],
+  hi:["नमस्ते {name} जी! Tax season आ रहा है और बहुत से {occupation} लोग हैरान होते हैं कि कितना बचा सकते हैं। अगर आप चाहें तो कुछ काम की जानकारी share कर सकता हूँ — पूरी तरह आपकी सुविधा अनुसार।"],
+  bn:["নমস্কার {name}! Tax season আসছে আর অনেক {occupation} মানুষ জেনে অবাক হন কতটা বাঁচাতে পারেন। আপনি চাইলে share করতে পারি — সম্পূর্ণ আপনার সুবিধামতো।"],
+  ta:["வணக்கம் {name}! Tax season வரப்போகிறது. பல {occupation} மக்கள் எவ்வளவு சேமிக்க முடியும் என்பதில் ஆச்சரியப்படுகிறார்கள். விரும்பினால் share செய்ய மகிழ்ச்சி — commitment இல்லை."],
+  te:["నమస్కారం {name}! Tax season వస్తోంది. చాలా మంది {occupation} వారు ఎంత ఆదా చేయవచ్చో తెలిసి ఆశ్చర్యపోతారు. మీకు ఇష్టమైతే share చేయగలను — commitment లేదు."],
+  mr:["नमस्कार {name}! Tax season येतोय. बरेच {occupation} लोक किती वाचवू शकतात ऐकून आश्चर्यचकित होतात. ठीक वाटलं तर share करायला आवडेल — commitment नाही."],
+  as:["নমস্কাৰ {name}! Tax season আহিছে। বহু {occupation} মানুহে জানি আচৰিত হয় কিমান সঞ্চয় কৰিব পাৰে। বিচাৰিলে share কৰিব পাৰোঁ — commitment নাই।"],
+  gu:["નમસ્તે {name}! Tax season આવી રહ્યો છે. ઘણા {occupation} લોકો જાણીને આશ્ચર્ય પામે છે. ઠીક લાગે તો share કરવા ઈચ્છું છું — commitment નહીં."]
+},
+retirement: {
+  en: [
+    "Hi {name}, I know retirement feels far away at {age} — but the people who started planning early are the most relaxed today. I work with {occupation} people on this. If you'd ever like to explore this, I'm happy to have a small chat — completely at your convenience.",
+    "Hello {name}! I recently spoke with a {occupation} person your age who said — \"I wish someone had this conversation with me 5 years ago.\" If you're open to it, we could have a brief chat sometime — no rush at all."
+  ],
+  hi:["नमस्ते {name} जी! {age} साल में retirement दूर लगती है — लेकिन जिन लोगों ने जल्दी शुरू किया वो आज tension-free हैं। अगर कभी बात करना चाहें, तो मुझे खुशी होगी — पूरी तरह आपकी सुविधा अनुसार।"],
+  bn:["নমস্কার {name}! {age} বছরে retirement দূর মনে হয় — কিন্তু যারা আগে শুরু করেছেন তারা tension-free। আপনার ইচ্ছা হলে কথা বলতে পারি — কোনো তাড়াহুড়ো নেই।"],
+  ta:["வணக்கம் {name}! {age} வயதில் retirement தூரமாக தோன்றும் — ஆனால் சீக்கிரம் தொடங்கியவர்கள் நிம்மதியாக இருக்கிறார்கள். விருப்பமிருந்தால் பேசலாம் — அவசரம் இல்லை."],
+  te:["నమస్కారం {name}! {age} ఏళ్లలో retirement దూరంగా అనిపిస్తుంది — కానీ ముందుగా మొదలుపెట్టినవారు tension-free. ఇష్టమైతే మాట్లాడగలము — తొందర లేదు."],
+  mr:["नमस्कार {name}! {age} वर्षांत retirement दूर वाटतं — पण लवकर सुरू केलेले tension-free आहेत. ठीक वाटलं तेव्हा बोलू — घाई नाही."],
+  as:["নমস্কাৰ {name}! {age} বছৰত retirement দূৰৰ কথা লাগে — কিন্তু আগতীয়াকৈ আৰম্ভ কৰাসকল tension-free। ইচ্ছা হ'লে কথা পাতিব পাৰোঁ — খৰখৰীয়া নাই।"],
+  gu:["નમસ્તે {name}! {age} વર્ષે retirement દૂરનું લાગે — પણ વહેલું શરૂ કરનારા tension-free છે. ઠીક લાગે ત્યારે વાત થઈ શકે — ઉતાવળ નથી."]
+},
+health_angle: {
+  en: [
+    "Hi {name}, hope you're keeping well! I talk to a lot of {occupation} people about something most of us tend to put off — being ready for unexpected medical expenses. If you'd ever like to have a small chat about it, I'm here. Completely at your convenience!",
+    "Hello {name}! Many people say their biggest worry isn't the hospital bill — it's how it affects the family's savings. I help people plan for this. If you're ever interested, I'd be happy to share — no pressure at all."
+  ],
+  hi:["नमस्ते {name} जी! बहुत से {occupation} लोगों से एक बात पर बात करता हूँ जो हम टालते रहते हैं — medical खर्चों के लिए तैयार रहना। अगर कभी बात करना चाहें, तो मैं available हूँ। आपकी सुविधा अनुसार!"],
+  bn:["নমস্কার {name}! অনেক {occupation} মানুষের সাথে একটা বিষয়ে কথা বলি যেটা আমরা এড়িয়ে যাই — medical খরচের জন্য তৈরি থাকা। ইচ্ছা হলে কথা বলতে পারি — সম্পূর্ণ আপনার সুবিধামতো!"],
+  ta:["வணக்கம் {name}! பல {occupation} மக்களிடம் நாம் தள்ளிப்போடும் ஒரு விஷயம் பற்றி பேசுகிறேன் — medical செலவுகளுக்கு தயாராக இருப்பது. விருப்பமிருந்தால் நான் இருக்கிறேன் — அவசரம் இல்லை!"],
+  te:["నమస్కారం {name}! చాలా మంది {occupation} వారితో ఒక విషయం గురించి మాట్లాడతాను — medical ఖర్చులకు సిద్ధంగా ఉండటం. ఇష్టమైతే నేను ఉన్నాను — తొందర లేదు!"],
+  mr:["नमस्कार {name}! अनेक {occupation} लोकांशी एका गोष्टीवर बोलतो जी सगळे पुढे ढकलतात — medical खर्चासाठी तयार राहणे. वाटलं तर मी उपलब्ध आहे — घाई नाही!"],
+  as:["নমস্কাৰ {name}! বহু {occupation} মানুহৰ সৈতে এটা বিষয়ত কথা পাতোঁ — medical খৰচৰ বাবে প্ৰস্তুত থকা। ইচ্ছা হ'লে মই আছোঁ — খৰখৰীয়া নাই!"],
+  gu:["નમસ્તે {name}! ઘણા {occupation} લોકો સાથે એક વાત કરું છું જે બધા ટાળે છે — medical ખર્ચ માટે તૈયાર રહેવું. ઠીક લાગે તો હું ઉપલબ્ધ છું — ઉતાવળ નથી!"]
+},
+festival_occasion: {
+  en: [
+    "Hi {name}, wishing you and your family a very happy {occasion}! 🙏 Many families use this special time to think about something meaningful for their loved ones' future. If you'd ever be interested in a friendly conversation about this, I'd be happy to connect — whenever it suits you after the celebrations!",
+    "Hello {name}! Happy {occasion}! 🎉 A lot of people use this special time to start something good for their family. If you'd like, I'd love to share a few ideas sometime — you pick the time, absolutely no rush.",
+    "Hi {name}, {occasion} greetings to you and your family! 🙏 This is a beautiful time to think about your loved ones' future. If the thought interests you, I'd be happy to have a friendly chat sometime after {occasion} — only if you're comfortable!"
+  ],
+  hi:["नमस्ते {name} जी! {occasion} की ढेर सारी शुभकामनाएं! 🙏 बहुत से लोग इस मौके पर अपनों के future के लिए कुछ अच्छा सोचते हैं। अगर कभी बात करना चाहें, तो मुझे खुशी होगी — {occasion} के बाद जब भी सुविधा हो!","हेलो {name} जी! {occasion} मुबारक! 🎉 बहुत से लोग इस खास मौके पर family के लिए कुछ meaningful शुरू करते हैं। चाहें तो ideas share करूँगा — आप time बताइए, कोई जल्दी नहीं।"],
+  bn:["নমস্কার {name}! {occasion}-এর শুভেচ্ছা! 🙏 অনেক মানুষ এই সময়ে প্রিয়জনদের ভবিষ্যতের জন্য ভালো কিছু ভাবেন। ইচ্ছা হলে {occasion}-এর পর কথা বলতে পারি — আপনার সুবিধামতো!"],
+  ta:["வணக்கம் {name}! {occasion} வாழ்த்துக்கள்! 🙏 பலர் இந்த நேரத்தில் குடும்பத்தின் எதிர்காலத்திற்காக நல்லது யோசிக்கிறார்கள். விருப்பமிருந்தால் {occasion}-க்குப் பிறகு பேசலாம் — அவசரம் இல்லை!"],
+  te:["నమస్కారం {name}! {occasion} శుభాకాంక్షలు! 🙏 చాలా మంది ఈ సమయంలో ప్రియమైన వారి భవిష్యత్తు గురించి ఆలోచిస్తారు. ఇష్టమైతే {occasion} తర్వాత మాట్లాడగలము — తొందర లేదు!"],
+  mr:["नमस्कार {name}! {occasion} च्या शुभेच्छा! 🙏 अनेक लोक या वेळी आपल्या माणसांच्या भविष्यासाठी चांगलं विचार करतात. ठीक वाटलं तर {occasion} नंतर बोलू — घाई नाही!"],
+  as:["নমস্কাৰ {name}! {occasion}-ৰ শুভেচ্ছা! 🙏 বহু মানুহে এই সময়ত প্ৰিয়জনৰ ভৱিষ্যতৰ বাবে ভাল কিবা ভাবে। ইচ্ছা হ'লে {occasion}-ৰ পিছত কথা পাতিব পাৰোঁ — খৰখৰীয়া নাই!"],
+  gu:["નમસ્તે {name}! {occasion}ની શુભેચ્છા! 🙏 ઘણા લોકો આ સમયે પ્રિયજનોના ભવિષ્ય માટે વિચારે છે. ઠીક લાગે તો {occasion} પછી વાત કરી શકીએ — ઉતાવળ નથી!"]
+},
+general_intro: {
+  en: [
+    "Hi {name}! I help {occupation} people make sure their family is financially safe. It's just a small conversation but it can make a real difference. If you'd ever like to chat about this, I'm here — whenever it's convenient for you, no rush at all.",
+    "Hello {name}! I got your number through a reference. I work with {occupation} people on financial planning — nothing pushy at all. If you're ever free for a short friendly conversation, I'd really appreciate the chance. Completely at your convenience!",
+    "Hi {name}, I know we haven't spoken before so I'll keep it simple — I help working people like you protect their family's future. Many {occupation} people have found even a short chat very useful. If you're open to it, I'd love to connect sometime — only when you're comfortable."
+  ],
+  hi:["नमस्ते {name} जी! मैं {occupation} लोगों की family को financially safe करने में help करता हूँ। अगर कभी बात करना चाहें, तो मैं available हूँ — जब भी सुविधा हो, कोई जल्दी नहीं।","हेलो {name} जी! आपका number एक reference से मिला। मैं {occupation} लोगों को financial planning में help करता हूँ — कोई pressure नहीं। कभी छोटी बातचीत हो सके तो बहुत अच्छा लगेगा। आपकी सुविधा अनुसार!"],
+  bn:["নমস্কার {name}! আমি {occupation} মানুষদের পরিবারকে financially safe করতে সাহায্য করি। ইচ্ছা হলে কথা বলতে পারি — আপনার সুবিধামতো, তাড়াহুড়ো নেই।"],
+  ta:["வணக்கம் {name}! {occupation} மக்களின் குடும்பத்தை financially safe-ஆக வைக்க உதவுகிறேன். விருப்பமிருந்தால் நான் இருக்கிறேன் — உங்கள் வசதியான நேரத்தில், அவசரம் இல்லை."],
+  te:["నమస్కారం {name}! {occupation} వారి కుటుంబాన్ని financially safe-గా చేయడంలో సహాయం చేస్తాను. ఇష్టమైతే నేను ఉన్నాను — మీ అనువైన సమయంలో, తొందర లేదు."],
+  mr:["नमस्कार {name}! मी {occupation} लोकांच्या कुटुंबाला financially safe करायला मदत करतो. वाटलं तर मी उपलब्ध आहे — तुमच्या सोयीनुसार, घाई नाही."],
+  as:["নমস্কাৰ {name}! মই {occupation} মানুহৰ পৰিয়ালক financially safe কৰাত সহায় কৰোঁ। ইচ্ছা হ'লে মই আছোঁ — আপোনাৰ সুবিধামতে, খৰখৰীয়া নাই।"],
+  gu:["નમસ્તે {name}! હું {occupation} લોકોના પરિવારને financially safe કરવામાં મદદ કરું છું. ઠીક લાગે તો હું ઉપલબ્ધ છું — તમારી સુવિધા મુજબ, ઉતાવળ નથી."]
+}
+};
+
+const OCCUPATIONS=['Salaried / Office Job','Business Owner','Doctor / Medical','Government Job','Teacher / Professor','Self Employed / Freelancer','Homemaker','Retired / Senior'];
+const FAMILY_OPTIONS=['Single / Unmarried','Newly Married','Married + Kids','Parents / Elderly'];
+const CONCERNS=[{label:"Family's Safety 👨‍👩‍👧",key:"family"},{label:"Child's Education 📚",key:"children"},{label:"Tax Saving 💰",key:"tax"},{label:"Retirement Planning 🏖️",key:"retirement"},{label:"Health / Medical 🏥",key:"health"},{label:"Not Sure / General",key:"general"}];
+
+function cleanOccupation(o){const m={'Salaried / Office Job':'salaried','Business Owner':'business','Doctor / Medical':'medical','Government Job':'government','Teacher / Professor':'teaching','Self Employed / Freelancer':'self-employed','Homemaker':'homemaker','Retired / Senior':'retired'};return m[o]||o;}
+
+// ═══════════════════════════════════════════════
+// CHAT UI ENGINE
+// ═══════════════════════════════════════════════
+function getTime(){return new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:true});}
+
+function addMessage(text,type='bot',extra=''){
+  const ca=document.getElementById('chatArea'),div=document.createElement('div');
+  div.className=`message ${type}`;
+  let html=text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+  div.innerHTML=`${html}${extra}<div class="msg-time">${getTime()}${type==='user'?'<span class="ticks">✓✓</span>':''}</div>`;
+  ca.appendChild(div);ca.scrollTop=ca.scrollHeight;return div;
 }
 
-function addQuickReplies(options, callback) {
-  const ca = document.getElementById('chatArea'), div = document.createElement('div');
-  div.className = 'message bot';
-  div.innerHTML = `<div class="quick-replies">${options.map((o,i)=>`<button class="quick-btn" data-idx="${i}">${typeof o==='object'?(o.label||o.name):o}</button>`).join('')}</div><div class="msg-time">${getTime()}</div>`;
-  ca.appendChild(div); ca.scrollTop = ca.scrollHeight;
-  div.querySelectorAll('.quick-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      div.querySelectorAll('.quick-btn').forEach(b=>{b.disabled=true;b.style.opacity='0.5';});
-      btn.style.opacity='1';btn.style.background='var(--wa-green)';btn.style.color='white';
-      callback(parseInt(btn.dataset.idx), options[parseInt(btn.dataset.idx)]);
-    });
-  });
+function addQuickReplies(options,callback){
+  const ca=document.getElementById('chatArea'),div=document.createElement('div');div.className='message bot';
+  div.innerHTML=`<div class="quick-replies">${options.map((o,i)=>`<button class="quick-btn" data-idx="${i}">${typeof o==='object'?(o.label||o.name):o}</button>`).join('')}</div><div class="msg-time">${getTime()}</div>`;
+  ca.appendChild(div);ca.scrollTop=ca.scrollHeight;
+  div.querySelectorAll('.quick-btn').forEach(btn=>{btn.addEventListener('click',()=>{div.querySelectorAll('.quick-btn').forEach(b=>{b.disabled=true;b.style.opacity='.5';});btn.style.opacity='1';btn.style.background='var(--wa-green)';btn.style.color='white';callback(parseInt(btn.dataset.idx),options[parseInt(btn.dataset.idx)]);});});
 }
 
-function addLanguageGrid(callback) {
-  const ca = document.getElementById('chatArea'), div = document.createElement('div');
-  div.className = 'message bot';
-  div.innerHTML = `<div>What language should the message be in?</div><div class="lang-grid">${Object.entries(LANGUAGES).map(([c,l])=>`<button class="lang-btn" data-code="${c}"><div class="lang-native">${l.flag} ${l.native}</div><div class="lang-eng">${l.name}</div></button>`).join('')}</div><div class="msg-time">${getTime()}</div>`;
-  ca.appendChild(div); ca.scrollTop = ca.scrollHeight;
-  div.querySelectorAll('.lang-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      div.querySelectorAll('.lang-btn').forEach(b=>{b.style.opacity='0.5';b.style.pointerEvents='none';});
-      btn.style.opacity='1';btn.style.border='2px solid var(--wa-green)';btn.style.background='#f0faf0';
-      callback(btn.dataset.code);
-    });
-  });
+function addModeSelector(callback){
+  const ca=document.getElementById('chatArea'),div=document.createElement('div');div.className='message bot';
+  div.innerHTML=`<div class="mode-grid">
+    <button class="mode-btn" data-mode="icebreaker"><div class="mode-icon">💬</div><div class="mode-title">Icebreaker</div><div class="mode-desc">First message to a new lead</div></button>
+    <button class="mode-btn" data-mode="recommend"><div class="mode-icon">📋</div><div class="mode-title">Need Analyser</div><div class="mode-desc">Product recommendation in a meeting</div></button>
+  </div><div class="msg-time">${getTime()}</div>`;
+  ca.appendChild(div);ca.scrollTop=ca.scrollHeight;
+  div.querySelectorAll('.mode-btn').forEach(btn=>{btn.addEventListener('click',()=>{div.querySelectorAll('.mode-btn').forEach(b=>{b.style.opacity='.5';b.style.pointerEvents='none';});btn.style.opacity='1';btn.style.border='2px solid var(--wa-green)';btn.style.background='#f0faf0';callback(btn.dataset.mode);});});
+}
+
+function addLanguageGrid(callback){
+  const ca=document.getElementById('chatArea'),div=document.createElement('div');div.className='message bot';
+  div.innerHTML=`<div>What language should the message be in?</div><div class="lang-grid">${Object.entries(LANGUAGES).map(([c,l])=>`<button class="lang-btn" data-code="${c}"><div class="lang-native">${l.flag} ${l.native}</div><div class="lang-eng">${l.name}</div></button>`).join('')}</div><div class="msg-time">${getTime()}</div>`;
+  ca.appendChild(div);ca.scrollTop=ca.scrollHeight;
+  div.querySelectorAll('.lang-btn').forEach(btn=>{btn.addEventListener('click',()=>{div.querySelectorAll('.lang-btn').forEach(b=>{b.style.opacity='.5';b.style.pointerEvents='none';});btn.style.opacity='1';btn.style.border='2px solid var(--wa-green)';btn.style.background='#f0faf0';callback(btn.dataset.code);});});
+}
+
+function addGoalToggles(callback){
+  const ca=document.getElementById('chatArea'),div=document.createElement('div');div.className='message bot';
+  const goalNames=Object.keys(CONFIG.goals);
+  const selected={};goalNames.forEach(g=>{selected[g]=false;});
+  div.innerHTML=`<div>Tap to select, then press Done:</div><div class="goal-toggles">${goalNames.map(g=>`<button class="goal-toggle" data-goal="${g}"><span class="toggle-dot"></span>${g}</button>`).join('')}</div><button class="done-btn" id="goalDone">Done ✓</button><div class="msg-time">${getTime()}</div>`;
+  ca.appendChild(div);ca.scrollTop=ca.scrollHeight;
+  div.querySelectorAll('.goal-toggle').forEach(btn=>{btn.addEventListener('click',()=>{const g=btn.dataset.goal;selected[g]=!selected[g];btn.classList.toggle('on');btn.querySelector('.toggle-dot').innerHTML=selected[g]?'✓':'';});});
+  div.querySelector('#goalDone').addEventListener('click',()=>{div.querySelectorAll('button').forEach(b=>{b.disabled=true;b.style.pointerEvents='none';});callback(selected);});
 }
 
 function showTyping(){const ca=document.getElementById('chatArea'),d=document.createElement('div');d.className='message bot';d.id='typingMsg';d.innerHTML='<div class="typing-indicator"><span></span><span></span><span></span></div>';ca.appendChild(d);ca.scrollTop=ca.scrollHeight;}
 function hideTyping(){const e=document.getElementById('typingMsg');if(e)e.remove();}
 function disableInput(d){STATE.inputDisabled=d;document.getElementById('userInput').disabled=d;}
 
-async function botReply(text,extra='',delay=600){
-  disableInput(true);showTyping();await new Promise(r=>setTimeout(r,delay));hideTyping();
-  const msg=addMessage(text,'bot',extra);disableInput(false);document.getElementById('userInput').focus();return msg;
-}
+async function botReply(text,extra='',delay=600){disableInput(true);showTyping();await new Promise(r=>setTimeout(r,delay));hideTyping();const msg=addMessage(text,'bot',extra);disableInput(false);document.getElementById('userInput').focus();return msg;}
 
-// ── CONVERSATION FLOW (no city step) ──
+function formatINR(n){if(n>=10000000)return '₹'+Math.round(n/100000)/100+' Cr';if(n>=100000)return '₹'+(n/100000).toFixed(1)+' L';if(n>=1000)return '₹'+(n/1000).toFixed(0)+'K';return '₹'+n;}
+
+// ═══════════════════════════════════════════════
+// WELCOME & MODE SELECTION
+// ═══════════════════════════════════════════════
 async function startChat(){
   document.getElementById('chatArea').innerHTML='';
   const dd=document.createElement('div');dd.className='date-divider';dd.innerHTML='<span>TODAY</span>';
   document.getElementById('chatArea').appendChild(dd);
-  await botReply(UI_TEXT.en.welcome,'',800);
-  await new Promise(r=>setTimeout(r,400));
-  STATE.step='language';
-  await botReply(UI_TEXT.en.askLang,'',500);
-  addLanguageGrid(code=>{STATE.data.language=code;addMessage(`${LANGUAGES[code].flag} ${LANGUAGES[code].native}`,'user');setTimeout(()=>askName(),300);});
-}
-
-async function askName(){STATE.step='name';await botReply(UI_TEXT.en.askName);}
-async function askAge(){STATE.step='age';await botReply(UI_TEXT.en.askAge.replace('{name}',STATE.data.name));}
-
-async function askOccupation(){
-  STATE.step='occupation';
-  await botReply(UI_TEXT.en.askOccupation.replace('{name}',STATE.data.name),'',500);
-  addQuickReplies(OCCUPATIONS,(i,v)=>{STATE.data.occupation=v;addMessage(v,'user');setTimeout(()=>askFamily(),300);});
-}
-
-async function askFamily(){
-  STATE.step='family';
-  await botReply(UI_TEXT.en.askFamily.replace('{name}',STATE.data.name),'',500);
-  addQuickReplies(FAMILY_OPTIONS,(i,v)=>{STATE.data.family=v;STATE.data.familyIdx=i;addMessage(v,'user');setTimeout(()=>askOccasion(),300);});
-}
-
-async function askOccasion(){
-  STATE.step='occasion';
-  await botReply(UI_TEXT.en.askOccasion,'',500);
-  const uf = getUpcomingFestivals();
-  const opts = [...uf.map(f=>f.label), 'No specific occasion'];
-  addQuickReplies(opts,(i)=>{
-    STATE.data.occasion = i < uf.length ? uf[i].name : null;
-    addMessage(opts[i],'user');
-    setTimeout(()=>askConcern(),300);
+  await botReply("Hello! I'm **Akash** — your insurance sales buddy! 👋\n\nWhat would you like to do today?",'',800);
+  await new Promise(r=>setTimeout(r,300));
+  addModeSelector(mode=>{
+    STATE.mode=mode;
+    if(typeof gtag==='function')gtag('event','mode_selected',{mode:mode});
+    addMessage(mode==='icebreaker'?'💬 Icebreaker':'📋 Need Analyser','user');
+    setTimeout(()=>{mode==='icebreaker'?startIcebreaker():startRecommend();},400);
   });
 }
 
-async function askConcern(){
-  STATE.step='concern';
-  await botReply(UI_TEXT.en.askConcern.replace('{name}',STATE.data.name),'',500);
-  addQuickReplies(CONCERNS.map(c=>c.label),(i)=>{STATE.data.concern=CONCERNS[i].key;addMessage(CONCERNS[i].label,'user');setTimeout(()=>generateIcebreakers(),300);});
+// ═══════════════════════════════════════════════
+// ICEBREAKER FLOW
+// ═══════════════════════════════════════════════
+async function startIcebreaker(){
+  await botReply("Great! Tell me about your lead and I'll create the perfect first message to get a meeting. Let's start!",'',600);
+  await new Promise(r=>setTimeout(r,300));
+  STATE.step='ib_language';
+  await botReply("First — what **language** should the message be in?",'',400);
+  addLanguageGrid(code=>{STATE.data.language=code;addMessage(`${LANGUAGES[code].flag} ${LANGUAGES[code].native}`,'user');setTimeout(()=>ibAskName(),300);});
 }
 
-// ── GENERATION ──
-function selectCategory(){
-  const{familyIdx,concern,occasion}=STATE.data;
-  if(concern==='tax')return'tax_saving';
-  if(concern==='retirement')return'retirement';
-  if(concern==='health')return'health_angle';
-  if(concern==='children'&&familyIdx===2)return'family_with_kids';
-  if(concern==='family'){if(familyIdx===1)return'family_young_married';if(familyIdx===2)return'family_with_kids';return'general_intro';}
-  if(occasion)return'festival_occasion';
-  if(familyIdx===1)return'family_young_married';
-  if(familyIdx===2)return'family_with_kids';
-  return'general_intro';
+async function ibAskName(){STATE.step='ib_name';await botReply("Great! 👍 Now tell me, what is your **lead's name**?");}
+async function ibAskAge(){STATE.step='ib_age';await botReply(`How old is **${STATE.data.name}**? (type a number)`);}
+async function ibAskOccupation(){STATE.step='ib_occupation';await botReply(`What does **${STATE.data.name}** do for work?\n\nChoose below or type:`,'',500);addQuickReplies(OCCUPATIONS,(i,v)=>{STATE.data.occupation=v;addMessage(v,'user');setTimeout(()=>ibAskFamily(),300);});}
+async function ibAskFamily(){STATE.step='ib_family';await botReply(`What is **${STATE.data.name}**'s family situation?`,'',500);addQuickReplies(FAMILY_OPTIONS,(i,v)=>{STATE.data.family=v;STATE.data.familyIdx=i;addMessage(v,'user');setTimeout(()=>ibAskOccasion(),300);});}
+
+async function ibAskOccasion(){
+  STATE.step='ib_occasion';await botReply("Any upcoming **festival or occasion** to use in the message?",'',500);
+  const uf=getUpcomingFestivals();const opts=[...uf.map(f=>f.label),'No specific occasion'];
+  addQuickReplies(opts,(i)=>{STATE.data.occasion=i<uf.length?uf[i].name:null;addMessage(opts[i],'user');setTimeout(()=>ibAskConcern(),300);});
 }
 
-function fill(t){
-  return t
-    .replace(/\{name\}/g, STATE.data.name||'')
-    .replace(/\{age\}/g, STATE.data.age||'30')
-    .replace(/\{occupation\}/g, cleanOccupation(STATE.data.occupation)||'working')
-    .replace(/\{occasion\}/g, STATE.data.occasion||'the festival');
-}
+async function ibAskConcern(){STATE.step='ib_concern';await botReply(`Last question! What is **${STATE.data.name}** most likely worried about?`,'',500);addQuickReplies(CONCERNS.map(c=>c.label),(i)=>{STATE.data.concern=CONCERNS[i].key;addMessage(CONCERNS[i].label,'user');setTimeout(()=>ibGenerate(),300);});}
 
-function getMsgs(cat,lang){const s=SCRIPTS[cat];if(!s)return[];return(s[lang]||s['en']||[]).map(m=>fill(m));}
+function ibSelectCategory(){const{familyIdx,concern,occasion}=STATE.data;if(concern==='tax')return'tax_saving';if(concern==='retirement')return'retirement';if(concern==='health')return'health_angle';if(concern==='children'&&familyIdx===2)return'family_with_kids';if(concern==='family'){if(familyIdx===1)return'family_young_married';if(familyIdx===2)return'family_with_kids';return'general_intro';}if(occasion)return'festival_occasion';if(familyIdx===1)return'family_young_married';if(familyIdx===2)return'family_with_kids';return'general_intro';}
 
-async function generateIcebreakers(){
-  STATE.step='generate';
-  await botReply(UI_TEXT.en.generating.replace('{name}',STATE.data.name),'',1000);
-  await new Promise(r=>setTimeout(r,600));
-  const cat=selectCategory(), lang=STATE.data.language||'en';
-  let msgs=getMsgs(cat,lang);
-  if(msgs.length<2){const en=getMsgs(cat,'en');msgs=[...msgs,...en.filter(m=>!msgs.includes(m))].slice(0,3);}
-  await botReply(UI_TEXT.en.resultTitle,'',400);
+function ibFill(t){return t.replace(/\{name\}/g,STATE.data.name||'').replace(/\{age\}/g,STATE.data.age||'30').replace(/\{occupation\}/g,cleanOccupation(STATE.data.occupation)||'working').replace(/\{occasion\}/g,STATE.data.occasion||'the festival');}
+
+function ibGetMsgs(cat,lang){const s=SCRIPTS[cat];if(!s)return[];return(s[lang]||s['en']||[]).map(m=>ibFill(m));}
+
+async function ibGenerate(){
+  STATE.step='ib_generate';await botReply(`Creating the best messages for **${STATE.data.name}**... 🧊✨`,'',1000);await new Promise(r=>setTimeout(r,600));
+  const cat=ibSelectCategory(),lang=STATE.data.language||'en';let msgs=ibGetMsgs(cat,lang);
+  if(typeof gtag==='function')gtag('event','icebreaker_generated',{category:cat,language:lang});
+  if(msgs.length<2){const en=ibGetMsgs(cat,'en');msgs=[...msgs,...en.filter(m=>!msgs.includes(m))].slice(0,3);}
+  await botReply("Here are your messages — pick the one that feels right! 👇",'',400);
   for(let i=0;i<Math.min(msgs.length,3);i++){
-    await new Promise(r=>setTimeout(r,350));
-    const ca=document.getElementById('chatArea'),div=document.createElement('div');
-    div.className='message bot';
+    await new Promise(r=>setTimeout(r,350));const ca=document.getElementById('chatArea'),div=document.createElement('div');div.className='message bot';
     const waLink=`https://wa.me/?text=${encodeURIComponent(msgs[i])}`;
-    div.innerHTML=`<div class="icebreaker-card"><h4>💬 Message ${i+1}</h4><div class="icebreaker-msg" id="msg-text-${i}">${msgs[i]}</div><div class="card-actions"><button class="copy-btn" onclick="copyMsg(this,${i})">📋 Copy</button><a href="${waLink}" target="_blank" class="wa-btn" style="text-decoration:none">💬 Send on WhatsApp</a></div></div><div class="msg-time">${getTime()}</div>`;
+    div.innerHTML=`<div class="icebreaker-card"><h4>💬 Message ${i+1}</h4><div class="icebreaker-msg" id="msg-text-${i}">${msgs[i]}</div><div class="card-actions"><button class="copy-btn" onclick="copyMsg(this,${i})">📋 Copy</button><a href="${waLink}" target="_blank" class="wa-btn" style="text-decoration:none" onclick="if(typeof gtag==='function')gtag('event','whatsapp_sent',{message_index:${i}})">💬 Send on WhatsApp</a></div></div><div class="msg-time">${getTime()}</div>`;
     ca.appendChild(div);ca.scrollTop=ca.scrollHeight;
   }
   await new Promise(r=>setTimeout(r,500));
-  addQuickReplies([UI_TEXT.en.tryAnother, UI_TEXT.en.startOver],(i)=>{
-    if(i===0){addMessage(UI_TEXT.en.tryAnother,'user');setTimeout(()=>generateIcebreakers(),300);}
-    else{addMessage(UI_TEXT.en.startOver,'user');setTimeout(()=>resetChat(),300);}
+  addQuickReplies(['🔄 More Messages','🆕 New Lead'],(i)=>{if(i===0){addMessage('🔄 More Messages','user');setTimeout(()=>ibGenerate(),300);}else{addMessage('🆕 New Lead','user');setTimeout(()=>resetChat(),300);}});
+  document.getElementById('newChatFab').classList.add('show');
+}
+
+// ═══════════════════════════════════════════════
+// PRODUCT RECOMMENDATION FLOW
+// ═══════════════════════════════════════════════
+async function startRecommend(){
+  await botReply("Let's find the right product for your customer! 📋\n\nI'll ask a few quick questions — first some basics you can pre-fill, then 5 simple questions for the customer.",'',800);
+  await new Promise(r=>setTimeout(r,300));
+  STATE.step='rc_age';
+  await botReply("What is the customer's **age**? (type a number)");
+}
+
+async function rcAskMarital(){STATE.step='rc_marital';await botReply("**Marital status?**",'',400);addQuickReplies(['Single','Married'],(i,v)=>{STATE.recoData.marital=v;addMessage(v,'user');setTimeout(()=>rcAskDependents(),300);});}
+
+async function rcAskDependents(){STATE.step='rc_dependents';await botReply("How many **dependents** does the customer have? (type a number, 0 if none)");}
+
+async function rcAskOutflow(){
+  STATE.step='rc_outflow';
+  await botReply("Now the **5 customer questions!** You can ask these together:\n\n**Q1.** Monthly outflow for a family like yours?",'',600);
+  addQuickReplies(Object.keys(CONFIG.outflowRanges),(i,v)=>{STATE.recoData.outflow=v;addMessage(v,'user');setTimeout(()=>rcAskWealth(),300);});
+}
+
+async function rcAskWealth(){
+  STATE.step='rc_wealth';
+  await botReply("**Q2.** Roughly, how much wealth does a family like yours have?",'',400);
+  addQuickReplies(Object.keys(CONFIG.wealthRanges),(i,v)=>{STATE.recoData.wealth=v;addMessage(v,'user');setTimeout(()=>rcAskMindset(),300);});
+}
+
+async function rcAskMindset(){
+  STATE.step='rc_mindset';
+  await botReply("**Q3.** Which feels more like the customer?",'',400);
+  addQuickReplies(['Live for today','Live long'],(i,v)=>{STATE.recoData.mindset=v;addMessage(v,'user');setTimeout(()=>rcAskGoals(),300);});
+}
+
+async function rcAskGoals(){
+  STATE.step='rc_goals';
+  await botReply("**Q4.** Any major expenses planned in the next ~20 years?\n\nTap to select all that apply:",'',500);
+  addGoalToggles(selected=>{
+    STATE.recoData.goals=selected;
+    const picked=Object.keys(selected).filter(k=>selected[k]);
+    addMessage(picked.length?picked.join(', '):'None selected','user');
+    setTimeout(()=>rcAskColour(),300);
+  });
+}
+
+async function rcAskColour(){
+  STATE.step='rc_colour';
+  await botReply("**Q5.** Last one — which car colour does the customer like most?\n\n_(This is a personality indicator, not about cars!)_",'',500);
+  addQuickReplies(['Black','Red','White','Blue'],(i,v)=>{STATE.recoData.carColour=v;addMessage(v,'user');setTimeout(()=>rcGenerate(),400);});
+}
+
+async function rcGenerate(){
+  STATE.step='rc_result';
+  await botReply("Crunching the numbers... 📊",'',1200);
+  await new Promise(r=>setTimeout(r,500));
+
+  const R = runRecoEngine(STATE.recoData);
+  if(typeof gtag==='function')gtag('event','recommendation_generated',{top_product:R.top1Product.product,top_type:R.top1.type,score:R.top1.score});
+
+  // Snapshot
+  const ca = document.getElementById('chatArea');
+  const snapDiv = document.createElement('div');
+  snapDiv.className='message bot';
+  snapDiv.innerHTML=`<div style="margin-bottom:4px"><strong>📊 Customer Snapshot</strong></div>
+    <div class="snapshot-grid">
+      <div class="snap-item"><div class="snap-label">Monthly Expense</div><div class="snap-value">${formatINR(R.monthlyOutflow)}</div></div>
+      <div class="snap-item"><div class="snap-label">In 20 Years</div><div class="snap-value">${formatINR(Math.round(R.projectedMonthly20y))}</div></div>
+      <div class="snap-item"><div class="snap-label">Wealth</div><div class="snap-value">${formatINR(R.wealthMidpoint)}</div></div>
+      <div class="snap-item"><div class="snap-label">Future Goals</div><div class="snap-value">${formatINR(Math.round(R.totalGoals))}</div></div>
+      <div class="snap-item"><div class="snap-label">Protection Cover</div><div class="snap-value green">${formatINR(R.coverRounded)}</div></div>
+      <div class="snap-item"><div class="snap-label">Monthly Budget</div><div class="snap-value">${formatINR(Math.round(R.premiumSoft))} – ${formatINR(Math.round(R.premiumHard))}</div></div>
+    </div><div class="msg-time">${getTime()}</div>`;
+  ca.appendChild(snapDiv);ca.scrollTop=ca.scrollHeight;
+
+  await new Promise(r=>setTimeout(r,500));
+
+  // Top recommendation
+  await botReply("Here are the **Top Recommendations** for this customer:",'',400);
+  await new Promise(r=>setTimeout(r,300));
+
+  // Card 1 - Primary
+  const c1=document.createElement('div');c1.className='message bot';
+  c1.innerHTML=`<div class="reco-card primary"><h4>🥇 #1 Recommendation</h4><div class="reco-product">${R.top1Product.product||'—'}</div><div class="reco-type">${R.top1.type} • Score: ${R.top1.score}/100</div><div class="reco-explain">${R.top1Product.explain||''}</div></div><div class="msg-time">${getTime()}</div>`;
+  ca.appendChild(c1);ca.scrollTop=ca.scrollHeight;
+
+  await new Promise(r=>setTimeout(r,400));
+
+  // Card 2 - Secondary
+  const c2=document.createElement('div');c2.className='message bot';
+  c2.innerHTML=`<div class="reco-card"><h4>🥈 #2 Recommendation</h4><div class="reco-product">${R.top2Product.product||'—'}</div><div class="reco-type">${R.top2.type} • Score: ${R.top2.score}/100</div><div class="reco-explain">${R.top2Product.explain||''}</div></div><div class="msg-time">${getTime()}</div>`;
+  ca.appendChild(c2);ca.scrollTop=ca.scrollHeight;
+
+  await new Promise(r=>setTimeout(r,400));
+
+  // Card 3 - Bundle
+  const bundleParts = R.bundle.split(' + ');
+  const bundleProducts = bundleParts.map(p => (CONFIG.productCatalog[p.trim()]||{}).product || p.trim()).join(' + ');
+  const c3=document.createElement('div');c3.className='message bot';
+  c3.innerHTML=`<div class="reco-card bundle"><h4>🎁 Bundle Suggestion</h4><div class="reco-product">${bundleProducts}</div><div class="reco-type">${R.bundle}</div><div class="reco-explain">A combination approach covering multiple needs for this customer's situation.</div></div><div class="msg-time">${getTime()}</div>`;
+  ca.appendChild(c3);ca.scrollTop=ca.scrollHeight;
+
+  await new Promise(r=>setTimeout(r,400));
+
+  // Confidence
+  if(R.confidence<100){await botReply(`⚠️ Confidence: **${R.confidence}/100** — some inputs were missing so results may be approximate.`);}
+
+  addQuickReplies(['📋 New Customer','💬 Icebreaker','🏠 Start Over'],(i)=>{
+    addMessage(['📋 New Customer','💬 Icebreaker','🏠 Start Over'][i],'user');
+    setTimeout(()=>{
+      if(i===0){STATE.recoData={};startRecommend();}
+      else if(i===1){STATE.data={};startIcebreaker();}
+      else resetChat();
+    },300);
   });
   document.getElementById('newChatFab').classList.add('show');
 }
 
-// ── UTILITIES ──
-function copyMsg(btn,i){
-  const t=document.getElementById(`msg-text-${i}`).innerText;
-  navigator.clipboard.writeText(t).then(()=>{btn.innerHTML='✅ Copied!';btn.classList.add('copied');setTimeout(()=>{btn.innerHTML='📋 Copy';btn.classList.remove('copied');},2000);}).catch(()=>{
-    const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
-    btn.innerHTML='✅ Copied!';btn.classList.add('copied');setTimeout(()=>{btn.innerHTML='📋 Copy';btn.classList.remove('copied');},2000);
-  });
-}
-
+// ═══════════════════════════════════════════════
+// INPUT HANDLING
+// ═══════════════════════════════════════════════
 function handleSend(){const inp=document.getElementById('userInput'),t=inp.value.trim();if(!t||STATE.inputDisabled)return;inp.value='';inp.style.height='auto';addMessage(t,'user');processInput(t);}
 
 function processInput(text){
   switch(STATE.step){
-    case'name':STATE.data.name=text;setTimeout(()=>askAge(),300);break;
-    case'age':const a=parseInt(text);if(isNaN(a)||a<18||a>100){botReply("Please enter a valid age between 18 and 100 (e.g. 32)");return;}STATE.data.age=a;setTimeout(()=>askOccupation(),300);break;
-    case'occupation':STATE.data.occupation=text;setTimeout(()=>askFamily(),300);break;
+    // Icebreaker
+    case'ib_name':STATE.data.name=text;setTimeout(()=>ibAskAge(),300);break;
+    case'ib_age':const a1=parseInt(text);if(isNaN(a1)||a1<18||a1>100){botReply("Please enter a valid age between 18 and 100");return;}STATE.data.age=a1;setTimeout(()=>ibAskOccupation(),300);break;
+    case'ib_occupation':STATE.data.occupation=text;setTimeout(()=>ibAskFamily(),300);break;
+    // Recommend
+    case'rc_age':const a2=parseInt(text);if(isNaN(a2)||a2<18||a2>100){botReply("Please enter a valid age between 18 and 100");return;}STATE.recoData.age=a2;setTimeout(()=>rcAskMarital(),300);break;
+    case'rc_dependents':const d=parseInt(text);if(isNaN(d)||d<0||d>15){botReply("Please enter a number between 0 and 15");return;}STATE.recoData.dependents=d;setTimeout(()=>rcAskOutflow(),300);break;
     default:botReply("Please choose from the options above 👆");
   }
 }
 
+function copyMsg(btn,i){const t=document.getElementById(`msg-text-${i}`).innerText;if(typeof gtag==='function')gtag('event','message_copied',{message_index:i});navigator.clipboard.writeText(t).then(()=>{btn.innerHTML='✅ Copied!';btn.classList.add('copied');setTimeout(()=>{btn.innerHTML='📋 Copy';btn.classList.remove('copied');},2000);}).catch(()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);btn.innerHTML='✅ Copied!';btn.classList.add('copied');setTimeout(()=>{btn.innerHTML='📋 Copy';btn.classList.remove('copied');},2000);});}
 function handleKeyDown(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();handleSend();}}
 function autoGrow(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px';}
-function resetChat(){STATE.step='welcome';STATE.data={};STATE.inputDisabled=false;document.getElementById('userInput').disabled=false;document.getElementById('newChatFab').classList.remove('show');startChat();}
+function resetChat(){STATE.step='welcome';STATE.mode=null;STATE.data={};STATE.recoData={};STATE.inputDisabled=false;document.getElementById('userInput').disabled=false;document.getElementById('newChatFab').classList.remove('show');startChat();}
 document.addEventListener('DOMContentLoaded',startChat);
 </script>
 </body>
