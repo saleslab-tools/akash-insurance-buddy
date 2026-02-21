@@ -138,12 +138,8 @@ function trackEvent(event, module, language, detail) {
   const isNew = !localStorage.getItem(VISITED_KEY);
   if (isNew) localStorage.setItem(VISITED_KEY, '1');
   const device = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
-  fetch(SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ event: event, module: module || '', language: language || '', detail: detail || '', device: device, newOrReturn: isNew ? 'New' : 'Returning' })
-  }).catch(() => {});
+  const params = new URLSearchParams({ event: event, module: module || '', language: language || '', detail: detail || '', device: device, newOrReturn: isNew ? 'New' : 'Returning' });
+  fetch(SHEET_URL + '?' + params.toString(), { mode: 'no-cors' }).catch(() => {});
 }
 
 // ═══════════════════════════════════════════════
