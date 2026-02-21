@@ -129,6 +129,24 @@ body{font-family:'Noto Sans','Noto Sans Devanagari','Noto Sans Bengali','Noto Sa
 const STATE = { mode: null, step: 'welcome', data: {}, recoData: {}, inputDisabled: false };
 
 // ═══════════════════════════════════════════════
+// GOOGLE SHEET TRACKER
+// ═══════════════════════════════════════════════
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxYojH1gjDQrqe0HzIGqMo5SNXhoZ2U7zsc-2fW_xSgBnffFhNdxy6rzDhEAurg-UB8Sg/exec';
+const VISITED_KEY = 'akash_visited';
+
+function trackEvent(event, module, language, detail) {
+  const isNew = !localStorage.getItem(VISITED_KEY);
+  if (isNew) localStorage.setItem(VISITED_KEY, '1');
+  const device = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ event: event, module: module || '', language: language || '', detail: detail || '', device: device, newOrReturn: isNew ? 'New' : 'Returning' })
+  }).catch(() => {});
+}
+
+// ═══════════════════════════════════════════════
 // PRODUCT RECOMMENDATION ENGINE (from Excel)
 // ═══════════════════════════════════════════════
 const CONFIG = {
@@ -453,6 +471,7 @@ function formatINR(n){if(n>=10000000)return '₹'+Math.round(n/100000)/100+' Cr'
 // ═══════════════════════════════════════════════
 async function startChat(){
   document.getElementById('chatArea').innerHTML='';
+  trackEvent('page_opened');
   const dd=document.createElement('div');dd.className='date-divider';dd.innerHTML='<span>TODAY</span>';
   document.getElementById('chatArea').appendChild(dd);
   await botReply("Hello! I'm **Akash** — your insurance sales buddy! 👋\n\nWhat would you like to do today?",'',800);
@@ -460,6 +479,7 @@ async function startChat(){
   addModeSelector(mode=>{
     STATE.mode=mode;
     if(typeof gtag==='function')gtag('event','mode_selected',{mode:mode});
+    trackEvent('module_picked', mode==='icebreaker'?'Icebreaker':'Need Analyser');
     addMessage(mode==='icebreaker'?'💬 Icebreaker':'📋 Need Analyser','user');
     setTimeout(()=>{mode==='icebreaker'?startIcebreaker():startRecommend();},400);
   });
@@ -499,12 +519,13 @@ async function ibGenerate(){
   STATE.step='ib_generate';await botReply(`Creating the best messages for **${STATE.data.name}**... 🧊✨`,'',1000);await new Promise(r=>setTimeout(r,600));
   const cat=ibSelectCategory(),lang=STATE.data.language||'en';let msgs=ibGetMsgs(cat,lang);
   if(typeof gtag==='function')gtag('event','icebreaker_generated',{category:cat,language:lang});
+  trackEvent('message_generated','Icebreaker',LANGUAGES[lang]?.name||lang,cat);
   if(msgs.length<2){const en=ibGetMsgs(cat,'en');msgs=[...msgs,...en.filter(m=>!msgs.includes(m))].slice(0,3);}
   await botReply("Here are your messages — pick the one that feels right! 👇",'',400);
   for(let i=0;i<Math.min(msgs.length,3);i++){
     await new Promise(r=>setTimeout(r,350));const ca=document.getElementById('chatArea'),div=document.createElement('div');div.className='message bot';
     const waLink=`https://wa.me/?text=${encodeURIComponent(msgs[i])}`;
-    div.innerHTML=`<div class="icebreaker-card"><h4>💬 Message ${i+1}</h4><div class="icebreaker-msg" id="msg-text-${i}">${msgs[i]}</div><div class="card-actions"><button class="copy-btn" onclick="copyMsg(this,${i})">📋 Copy</button><a href="${waLink}" target="_blank" class="wa-btn" style="text-decoration:none" onclick="if(typeof gtag==='function')gtag('event','whatsapp_sent',{message_index:${i}})">💬 Send on WhatsApp</a></div></div><div class="msg-time">${getTime()}</div>`;
+    div.innerHTML=`<div class="icebreaker-card"><h4>💬 Message ${i+1}</h4><div class="icebreaker-msg" id="msg-text-${i}">${msgs[i]}</div><div class="card-actions"><button class="copy-btn" onclick="copyMsg(this,${i})">📋 Copy</button><a href="${waLink}" target="_blank" class="wa-btn" style="text-decoration:none" onclick="trackEvent('whatsapp_sent','Icebreaker','','Message ${i+1}');if(typeof gtag==='function')gtag('event','whatsapp_sent',{message_index:${i}})">💬 Send on WhatsApp</a></div></div><div class="msg-time">${getTime()}</div>`;
     ca.appendChild(div);ca.scrollTop=ca.scrollHeight;
   }
   await new Promise(r=>setTimeout(r,500));
@@ -568,6 +589,7 @@ async function rcGenerate(){
 
   const R = runRecoEngine(STATE.recoData);
   if(typeof gtag==='function')gtag('event','recommendation_generated',{top_product:R.top1Product.product,top_type:R.top1.type,score:R.top1.score});
+  trackEvent('recommendation_done','Need Analyser','',R.top1Product.product+' (Score: '+R.top1.score+')');
 
   // Snapshot
   const ca = document.getElementById('chatArea');
@@ -645,7 +667,7 @@ function processInput(text){
   }
 }
 
-function copyMsg(btn,i){const t=document.getElementById(`msg-text-${i}`).innerText;if(typeof gtag==='function')gtag('event','message_copied',{message_index:i});navigator.clipboard.writeText(t).then(()=>{btn.innerHTML='✅ Copied!';btn.classList.add('copied');setTimeout(()=>{btn.innerHTML='📋 Copy';btn.classList.remove('copied');},2000);}).catch(()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);btn.innerHTML='✅ Copied!';btn.classList.add('copied');setTimeout(()=>{btn.innerHTML='📋 Copy';btn.classList.remove('copied');},2000);});}
+function copyMsg(btn,i){const t=document.getElementById(`msg-text-${i}`).innerText;if(typeof gtag==='function')gtag('event','message_copied',{message_index:i});trackEvent('message_copied',STATE.mode==='recommend'?'Need Analyser':'Icebreaker','','Message '+(i+1));navigator.clipboard.writeText(t).then(()=>{btn.innerHTML='✅ Copied!';btn.classList.add('copied');setTimeout(()=>{btn.innerHTML='📋 Copy';btn.classList.remove('copied');},2000);}).catch(()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);btn.innerHTML='✅ Copied!';btn.classList.add('copied');setTimeout(()=>{btn.innerHTML='📋 Copy';btn.classList.remove('copied');},2000);});}
 function handleKeyDown(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();handleSend();}}
 function autoGrow(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px';}
 function resetChat(){STATE.step='welcome';STATE.mode=null;STATE.data={};STATE.recoData={};STATE.inputDisabled=false;document.getElementById('userInput').disabled=false;document.getElementById('newChatFab').classList.remove('show');startChat();}
