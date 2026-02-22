@@ -133,12 +133,16 @@ const STATE = { mode: null, step: 'welcome', data: {}, recoData: {}, inputDisabl
 // ═══════════════════════════════════════════════
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxYojH1gjDQrqe0HzIGqMo5SNXhoZ2U7zsc-2fW_xSgBnffFhNdxy6rzDhEAurg-UB8Sg/exec';
 const VISITED_KEY = 'akash_visited';
+let USER_CITY = '';
+
+// Detect city on load
+fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{USER_CITY=d.city||'';}).catch(()=>{});
 
 function trackEvent(event, module, language, detail) {
   const isNew = !localStorage.getItem(VISITED_KEY);
   if (isNew) localStorage.setItem(VISITED_KEY, '1');
   const device = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
-  const params = new URLSearchParams({ event: event, module: module || '', language: language || '', detail: detail || '', device: device, newOrReturn: isNew ? 'New' : 'Returning' });
+  const params = new URLSearchParams({ event: event, module: module || '', language: language || '', detail: detail || '', device: device, newOrReturn: isNew ? 'New' : 'Returning', city: USER_CITY });
   fetch(SHEET_URL + '?' + params.toString(), { mode: 'no-cors' }).catch(() => {});
 }
 
